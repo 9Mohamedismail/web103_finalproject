@@ -22,7 +22,7 @@ Frontend:
 
 Backend:
 
-## Features
+## Features (6+)
 
 ### [Name of Feature 1]
 
