@@ -1,4 +1,4 @@
-# [CardMaxer]
+# CardMaxer
 
 CodePath WEB103 Final Project
 
@@ -22,7 +22,7 @@ Frontend:
 
 Backend:
 
-## Features (6+)
+## Features
 
 ### [Authentication]
 
