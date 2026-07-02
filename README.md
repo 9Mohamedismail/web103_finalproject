@@ -2,7 +2,7 @@
 
 CodePath WEB103 Final Project
 
-Designed and developed by: [your names here]
+Designed and developed by: Mohamed Ismail, Tanvir Pulak, Jose Fuentes, Alexander Pulido, Andrew Quach
 
 🔗 Link to deployed app:
 
