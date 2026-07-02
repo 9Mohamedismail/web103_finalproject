@@ -10,7 +10,7 @@ Designed and developed by: Mohamed Ismail, Tanvir Pulak, Jose Fuentes, Alexander
 
 ### Description and Purpose
 
-CardMaxer is a full stack web application that helps users browse, compare, and discover credit cards based on their financial needs. Users can explore detailed information about each card. The website also allows users to filter and sort cards, save favorites, read and write reviews, and receive personalized recommendations based on their credit score. The goal is to simplify the process of choosing a credit card by presenting information in an easy-to-understand and organized way.
+CardMaxer is a full-stack web application that helps users browse, compare, and discover credit cards based on their financial needs. Users can explore detailed information about each card. The website also allows users to filter and sort cards, save favorites, read and write reviews, and receive personalized recommendations based on their credit score. The goal is to simplify the process of choosing a credit card by presenting information in an easy-to-understand and organized way.
 
 ### Inspiration
 
@@ -24,35 +24,35 @@ Backend:
 
 ## Features
 
-### [Authentication]
+### 1. Authentication
 
 Users can signup/sign to view their favorited cards as well as manage their reviews.
 
 [gif goes here]
 
-### [Browse Cards]
+### 2. Browse Cards
 
 Users can browse all available credit cards and search by name.
 
 [gif goes here]
 
-### [Favorite]
+### 3. Favorite
 
 Users can add or remove credit cards from their favorites list for quick access later.
 
-### [Personalized Card Recommendations]
+### 4. Personalized Card Recommendations
 
 Users can enter their credit score and spending interests to receive recommended credit cards that best match their profile.
 
 [gif goes here]
 
-### [Reviews]
+### 5. Reviews
 
 Users can read reviews from other users and create, edit, or delete their own reviews for each credit card.
 
 [gif goes here]
 
-### [View Credit Card Details]
+### 6. View Credit Card Details
 
 Users can open a dedicated page for each credit card to view its rewards, annual fee, benefits, drawbacks, and recommended credit score. They can also see user reviews and add their own.
 
