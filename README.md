@@ -1,4 +1,4 @@
-# [your app name here]
+# [CardMaxer]
 
 CodePath WEB103 Final Project
 
@@ -10,7 +10,7 @@ Designed and developed by: Mohamed Ismail, Tanvir Pulak, Jose Fuentes, Alexander
 
 ### Description and Purpose
 
-[app name] is a full stack web application that helps users browse, compare, and discover credit cards based on their financial needs. Users can explore detailed information about each card. The website also allows users to filter and sort cards, save favorites, read and write reviews, and receive personalized recommendations based on their credit score. The goal is to simplify the process of choosing a credit card by presenting information in an easy-to-understand and organized way.
+CardMaxer is a full stack web application that helps users browse, compare, and discover credit cards based on their financial needs. Users can explore detailed information about each card. The website also allows users to filter and sort cards, save favorites, read and write reviews, and receive personalized recommendations based on their credit score. The goal is to simplify the process of choosing a credit card by presenting information in an easy-to-understand and organized way.
 
 ### Inspiration
 
