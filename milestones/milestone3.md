@@ -47,11 +47,11 @@ You will need to reference the GitHub Project Management guide in the course por
 
 ### 1. What went well during this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+Being able to pinpoint issues and add issues to github project. Successfully create milestones and set completion to milestone 1, 2, and 3.
 
 ### 2. What were some challenges your group faced in this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+Some challenges we faced is determining who gets assigned certain issues. We fixed this challenge by communication and collaborating.
 
 ### Did you finish all of your tasks in your sprint plan for this week? If you did not finish all of the planned tasks, how would you prioritize the remaining tasks on your list?
 
@@ -63,4 +63,4 @@ You will need to reference the GitHub Project Management guide in the course por
 
 ### 5. What additional support will you need in upcoming units as you continue to work on your final project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+As a group we agreeded that we do not need any additional support as of now.
