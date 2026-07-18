@@ -23,7 +23,7 @@ You will need to reference the GitHub Project Management guide in the course por
     5. Implement Credit Card Reviews CRUD
     6. Build Credit Card Details Page
 
-* [ ] In your repo, update the status of issues in your project board.
+* [x] In your repo, update the status of issues in your project board.
 
 * [x] In your repo, create a GitHub Milestone for each final project unit, corresponding to each of the 5 milestones in your `milestones/` directory.
 
@@ -35,7 +35,7 @@ You will need to reference the GitHub Project Management guide in the course por
     4. Milestone 4 - Unit 8
     5. Milestone 5 - Unit 9
 
-  * [ ] Set the completion percentage of each milestone. The GitHub Milestone for this unit (**Milestone 3 - Unit 7**) should be **100% completed** when you submit for full points.
+  * [x] Set the completion percentage of each milestone. The GitHub Milestone for this unit (**Milestone 3 - Unit 7**) should be **100% completed** when you submit for full points.
 
 * [ ] In `README.md`, check off the features you have completed in this unit by adding a ✅ emoji in front of the feature's name.
 

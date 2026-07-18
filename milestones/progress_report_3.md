@@ -18,6 +18,8 @@ List the name of each GitHub Milestone you created, one per line:
 - Milestone 1 - Unit 5: 100%
 - Milestone 2 - Unit 6: 100%
 - Milestone 3 - Unit 7: 100%
+- Milestone 4 - Unit 8: 0%
+- Milestone 5 - Unit 9: 0%
 
 ## Milestone 3 Completion
 Replace the blank before the percent sign with a number from 0 to 100.
