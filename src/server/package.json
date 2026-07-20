@@ -1,12 +1,19 @@
 {
-  "name": "server",
+  "name": "cardmatch",
   "version": "1.0.0",
   "description": "",
-  "license": "ISC",
-  "author": "",
-  "type": "commonjs",
-  "main": "index.js",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run reset && nodemon Server.js",
+    "reset": "node config/reset.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^4.22.2",
+    "nodemon": "^2.0.22",
+    "pg": "^8.21.0"
   }
 }
