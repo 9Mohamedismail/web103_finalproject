@@ -23,7 +23,7 @@ List the name of each GitHub Milestone you created, one per line:
 
 ## Milestone 3 Completion
 Replace the blank before the percent sign with a number from 0 to 100.
-Completion percentage for Milestone 3 - Unit 7: %
+Completion percentage for Milestone 3 - Unit 7: 100%
 List each issue you completed this unit and the main file or folder where that work lives, one per line:
 - Progress Report - milestones/progress_report_3.md
 - Milestone 3 - milestones/milestone3.md
@@ -31,5 +31,4 @@ List each issue you completed this unit and the main file or folder where that w
 
 ## Features Completed This Unit
 List each feature you completed and checked off in readme.md this unit, one per line:
-- Example: Search events by category
--
+- Created backend and seed

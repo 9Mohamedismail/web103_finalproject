@@ -1,5 +1,5 @@
 const CLEAR_TABLES_QUERY = `
-    TRUNCATE TABLE
+    DROP TABLE IF EXISTS
         users,
         credit_cards,
         spending_categories,
@@ -8,7 +8,7 @@ const CLEAR_TABLES_QUERY = `
         recommendations,
         user_spending_interests,
         card_spending_categories
-    RESTART IDENTITY CASCADE;
+        card_spending_categories CASCADE;
 `
 const INIT_TABLE_QUERIES = [
     `
