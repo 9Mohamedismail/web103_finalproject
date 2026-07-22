@@ -25,10 +25,12 @@ List the name of each GitHub Milestone you created, one per line:
 Replace the blank before the percent sign with a number from 0 to 100.
 Completion percentage for Milestone 3 - Unit 7: 100%
 List each issue you completed this unit and the main file or folder where that work lives, one per line:
-- Progress Report - milestones/progress_report_3.md
-- Milestone 3 - milestones/milestone3.md
-- Update Readme - README.md
+- Create the backend database schema and seed data - src/server/config/schema.js, src/server/config/seed.js
+- Configure the database connection and environment variables - src/server/config/database.js, src/server/config/dotenv.js
+- Add database reset tooling - src/server/config/reset.js
+- Configure the Express server startup and health check - src/server/Server.js
+- Add the authentication route scaffold and server error handling - src/server/routes/AuthRouter.js, src/server/Server.js
 
 ## Features Completed This Unit
 List each feature you completed and checked off in readme.md this unit, one per line:
-- Created backend and seed
+- None completed yet; the README feature list still contains placeholder GIFs.
