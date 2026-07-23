@@ -1,4 +1,5 @@
 import './App.css'
+import landingPreview from '../../../planning/landing.png'
 
 function App() {
   return (
@@ -12,28 +13,28 @@ function App() {
 
       <section className="hero-section">
         <div className="hero-copy">
-          <p className="eyebrow">Smart credit card discovery</p>
-          <h1>Find the card that fits your lifestyle.</h1>
+          <p className="eyebrow">Your next favorite card</p>
+          <h1>Discover the perfect card for your spending style.</h1>
           <p className="hero-text">
-            Compare rewards, fees, and perks in one place so you can choose with confidence.
+            CardMaxer turns reward comparisons into a clear, confident decision with smart insights and simple browsing.
           </p>
           <div className="hero-actions">
-            <a className="primary-btn" href="#discover">Explore cards</a>
-            <a className="secondary-btn" href="#benefits">See how it works</a>
+            <a className="primary-btn" href="#explore">Explore Cards</a>
+            <a className="secondary-btn" href="#learn">How It Works</a>
+          </div>
+          <div className="demo-pill-row">
+            <span>Rewards</span>
+            <span>Fees</span>
+            <span>Benefits</span>
           </div>
         </div>
 
-        <div className="hero-card" aria-label="Featured card preview">
-          <div className="card-chip" />
-          <div className="card-number">**** 4832</div>
-          <div className="card-meta">
-            <span>Platinum Rewards</span>
-            <span>3.2% cash back</span>
-          </div>
+        <div className="hero-visual">
+          <img src={landingPreview} alt="CardMaxer landing preview" />
         </div>
       </section>
 
-      <section id="discover" className="info-grid">
+      <section id="explore" className="info-grid">
         <article className="info-card">
           <h2>Personalized picks</h2>
           <p>Get recommendations tailored to travel, dining, and everyday spending.</p>
