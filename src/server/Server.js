@@ -1,35 +1,46 @@
-import express from "express"
-import "./config/dotenv.js"
-import pool from "./config/database.js"
-import authRouter from "./routes/AuthRouter.js"
+import express from "express";
+import cors from "cors";
+import session from "express-session";
+import passport from "passport";
+import "./config/dotenv.js";
+import { GitHub } from "./config/auth.js";
+import authRoutes from "./routes/auth.js";
 
-const server = express()
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-server.use(express.json())
-server.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: "GET,POST,PUT,DELETE,PATCH",
+    credentials: true,
+  }),
+);
 
-server.get("/health", async (req, res, next) => {
-    try {
-        await pool.query("SELECT 1")
-        res.json({ status: "ok", database: "connected" })
-    } catch (error) {
-        next(error)
-    }
-})
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "cardmaxer-secret",
+    resave: false,
+    saveUninitialized: false,
+  }),
+);
 
-server.use("/api/auth", authRouter)
+app.use(passport.initialize());
+app.use(passport.session());
 
-server.use((req, res) => {
-    res.status(404).json({ error: "Route not found" })
-})
+passport.use(GitHub);
 
-server.use((error, req, res, next) => {
-    console.error(error)
-    res.status(500).json({ error: "Internal server error" })
-})
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
 
-const port = process.env.PORT || 3000
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
 
-server.listen(port, () => {
-    console.log(`Server listening on http://localhost:${port}`)
-})
+app.use("/auth", authRoutes);
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server listening on http://localhost:${PORT}`);
+});
