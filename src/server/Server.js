@@ -5,6 +5,7 @@ import passport from "passport";
 import "./config/dotenv.js";
 import { GitHub } from "./config/auth.js";
 import authRoutes from "./routes/auth.js";
+import cardsRoutes from "./routes/cards.js";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -40,6 +41,7 @@ passport.deserializeUser((user, done) => {
 });
 
 app.use("/auth", authRoutes);
+app.use("/api", cardsRoutes);
 
 app.listen(PORT, () => {
   console.log(`🚀 Server listening on http://localhost:${PORT}`);
