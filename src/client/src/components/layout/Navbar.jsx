@@ -1,3 +1,4 @@
+import Login from '../../pages/Login.jsx'
 import './Navbar.css'
 
 const navLinks = [
@@ -7,7 +8,7 @@ const navLinks = [
   { label: 'Reviews', href: '#' },
 ]
 
-function Navbar() {
+function Navbar({ apiUrl, user, onLogout }) {
   return (
     <header className="navbar">
       <a className="navbar__logo" href="#">
@@ -27,12 +28,16 @@ function Navbar() {
       </nav>
 
       <div className="navbar__auth">
-        <a className="navbar__login" href="#">
-          Log in with GitHub
-        </a>
-        <a className="navbar__signup" href="#">
-          Sign Up
-        </a>
+        {user?.id ? (
+          <>
+            <span className="navbar__username">@{user.username}</span>
+            <button type="button" className="navbar__logout" onClick={onLogout}>
+              Log out
+            </button>
+          </>
+        ) : (
+          <Login apiUrl={apiUrl} />
+        )}
       </div>
     </header>
   )

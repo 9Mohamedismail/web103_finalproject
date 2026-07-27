@@ -37,9 +37,22 @@
   white-space: nowrap;
 }
 
-.navbar__login {
+.navbar__login,
+.navbar__logout {
   font-size: 0.95rem;
   color: var(--color-heading);
+}
+
+.navbar__username {
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.navbar__logout {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
 }
 
 .navbar__signup {

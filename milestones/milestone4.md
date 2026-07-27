@@ -15,7 +15,7 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 
 ### 1. What went well during this unit?
 
-User authentication was successfully implemented.
+GitHub OAuth authentication was successfully implemented across the backend and frontend. Users can log in, remain authenticated through a session, view their username, and log out.
 
 ### 2. What were some challenges your group faced in this unit?
 
@@ -23,7 +23,7 @@ Trying to keep up with the time we had and managing different branches.
 
 ### 3. Did you finish all of your tasks in your sprint plan for this week? If you did not finish all of the planned tasks, how would you prioritize the remaining tasks on your list?
 
-We were able to finish the backend, which is what we wanted, but not the frontend, which is something we also wanted to do. Next week will be solely focused on the frontend.
+We finished the backend authentication flow and its frontend login and logout interface. The broader frontend features are not finished yet, so next week will be focused solely on the frontend.
 
 ### 4. Which features and user stories would you consider “at risk”? How will you change your plan if those items remain “at risk”?
 

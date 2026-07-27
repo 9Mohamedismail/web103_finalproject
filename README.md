@@ -20,13 +20,17 @@ Many of us on the team own credit cards and are interested in maximizing our rew
 
 Frontend:
 
+React, Vite
+
 Backend:
+
+Node.js, Express, PostgreSQL, Passport.js, GitHub OAuth
 
 ## Features
 
 ### 1. ✅ Authentication
 
-Users can signup/sign to view their favorited cards as well as manage their reviews.
+Users can sign up and log in with GitHub, remain authenticated through a session, and log out.
 
 [gif goes here]
 
