@@ -1,0 +1,68 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.25rem 2rem;
+  background: #fff;
+}
+
+.navbar__logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  white-space: nowrap;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar__link {
+  font-size: 0.95rem;
+  color: var(--color-heading);
+}
+
+.navbar__link--active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.navbar__auth {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  white-space: nowrap;
+}
+
+.navbar__login {
+  font-size: 0.95rem;
+  color: var(--color-heading);
+}
+
+.navbar__signup {
+  display: inline-block;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  background: var(--color-black);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .navbar__links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
