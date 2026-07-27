@@ -24,7 +24,7 @@ Backend:
 
 ## Features
 
-### 1. Authentication
+### 1. ✅ Authentication
 
 Users can signup/sign to view their favorited cards as well as manage their reviews.
 
