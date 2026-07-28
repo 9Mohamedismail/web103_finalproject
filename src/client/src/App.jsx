@@ -1,41 +1,68 @@
-import { useEffect, useState } from 'react'
-import HomePage from './pages/HomePage.jsx'
+import { useEffect, useState } from "react";
+import { useRoutes, Link } from "react-router-dom";
 
-const API_URL = 'http://localhost:3001'
+import Navbar from "./components/layout/Navbar.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
+import DiscoverPage from "./pages/DiscoverPage.jsx";
+
+const API_URL = "http://localhost:3001";
 
 function App() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
+  //user get
   useEffect(() => {
     const getUser = async () => {
       try {
         const response = await fetch(`${API_URL}/auth/login/success`, {
-          credentials: 'include',
-        })
+          credentials: "include",
+        });
 
         if (!response.ok) {
-          setUser(null)
-          return
+          setUser(null);
+          return;
         }
 
-        const json = await response.json()
-        setUser(json.user)
+        const json = await response.json();
+        setUser(json.user);
       } catch {
-        setUser(null)
+        setUser(null);
       }
-    }
+    };
 
-    getUser()
-  }, [])
+    getUser();
+  }, []);
 
   const logout = async () => {
     await fetch(`${API_URL}/auth/logout`, {
-      credentials: 'include',
-    })
-    window.location.href = '/'
-  }
+      credentials: "include",
+    });
+    window.location.href = "/";
+  };
 
-  return <HomePage apiUrl={API_URL} user={user} onLogout={logout} />
+  //page route elements
+  let element = useRoutes([
+    {
+      path: "/",
+      element: <HomePage />,
+    },
+    {
+      path: "/discover",
+      element: <DiscoverPage />,
+    },
+    {
+      path: "*",
+      element: <ErrorPage />,
+    },
+  ]);
+
+  return (
+    <>
+      <Navbar apiUrl={API_URL} user={user} onLogout={logout} />
+      {element}
+    </>
+  );
 }
 
-export default App
+export default App;
