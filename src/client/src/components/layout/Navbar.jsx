@@ -1,17 +1,17 @@
-import Login from '../../pages/Login.jsx'
-import './Navbar.css'
+import Login from "../../pages/Login.jsx";
+import "./Navbar.css";
 
 const navLinks = [
-  { label: 'Discover', href: '#' },
-  { label: 'Compare', href: '#', active: true },
-  { label: 'Recommendations', href: '#' },
-  { label: 'Reviews', href: '#' },
-]
+  { label: "Discover", href: "/discover" },
+  { label: "Compare", href: "/compare", active: true },
+  { label: "Recommendations", href: "/recommendations" },
+  { label: "Reviews", href: "/reviews" },
+];
 
 function Navbar({ apiUrl, user, onLogout }) {
   return (
     <header className="navbar">
-      <a className="navbar__logo" href="#">
+      <a className="navbar__logo" href="/">
         CardMaxer
       </a>
 
@@ -20,7 +20,9 @@ function Navbar({ apiUrl, user, onLogout }) {
           <a
             key={link.label}
             href={link.href}
-            className={link.active ? 'navbar__link navbar__link--active' : 'navbar__link'}
+            className={
+              link.active ? "navbar__link navbar__link--active" : "navbar__link"
+            }
           >
             {link.label}
           </a>
@@ -40,7 +42,7 @@ function Navbar({ apiUrl, user, onLogout }) {
         )}
       </div>
     </header>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
