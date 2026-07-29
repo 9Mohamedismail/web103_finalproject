@@ -12,19 +12,19 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(
-  cors({
-    origin: "http://localhost:5173",
-    methods: "GET,POST,PUT,DELETE,PATCH",
-    credentials: true,
-  }),
+    cors({
+        origin: "http://localhost:5173",
+        methods: "GET,POST,PUT,DELETE,PATCH",
+        credentials: true,
+    }),
 );
 
 app.use(
-  session({
-    secret: process.env.SESSION_SECRET || "cardmaxer-secret",
-    resave: false,
-    saveUninitialized: false,
-  }),
+    session({
+        secret: process.env.SESSION_SECRET || "cardmaxer-secret",
+        resave: false,
+        saveUninitialized: false,
+    }),
 );
 
 app.use(passport.initialize());
@@ -33,16 +33,16 @@ app.use(passport.session());
 passport.use(GitHub);
 
 passport.serializeUser((user, done) => {
-  done(null, user);
+    done(null, user);
 });
 
 passport.deserializeUser((user, done) => {
-  done(null, user);
+    done(null, user);
 });
 
 app.use("/auth", authRoutes);
-app.use("/api", cardsRoutes);
+app.use("/api/cards", cardsRoutes);
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server listening on http://localhost:${PORT}`);
+    console.log(`🚀 Server listening on http://localhost:${PORT}`);
 });

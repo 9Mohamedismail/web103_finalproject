@@ -1,28 +1,15 @@
 import express from "express";
+import passport from "passport";
+import rec_controller from "../controllers/rec_controller.js";
+import card_controller from "../controllers/card_controller.js";
 
 const router = express.Router();
 
-router.get("/cards", async (req, res) => {
-  try {
-    const cardApiResponse = await fetch(
-      "https://adaptable-dream-production-2fce.up.railway.app/v1/cards",
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.CARDAPI_API_KEY}`,
-        },
-      },
-    );
+router.get("/", card_controller.getAll);
 
-    const data = await cardApiResponse.json();
+router.get("/rec/:user", passport.authenticate("github", {
+    scope: ["read:user"],
+}), rec_controller.getAll);
 
-    if (!cardApiResponse.ok) {
-      return res.status(cardApiResponse.status).json(data);
-    }
-
-    res.status(200).json(data);
-  } catch (error) {
-    res.status(500).json({ error: "Unable to retrieve cards" });
-  }
-});
 
 export default router;
