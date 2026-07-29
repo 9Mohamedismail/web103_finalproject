@@ -1,7 +1,7 @@
 // Contributor credit: Chris Lin.
 
 import { pool } from "./database.js";
-import seedData from "../data/seedData.js";
+import seedData from "../data/seed_data.js";
 
 const clearTablesQuery = `
     DROP TABLE IF EXISTS
@@ -80,7 +80,6 @@ const createPerkCategoriesTable = async () => {
 
     await pool.query(query);
 }
-
 
 const createPerkScoresTable = async () => {
     const query = `
