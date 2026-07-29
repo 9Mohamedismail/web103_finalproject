@@ -14,13 +14,16 @@ List each issue you completed this unit and the main file or folder where that w
 - Configure PostgreSQL database connection - src/server/config/database.js
 - Add database reset and seed workflow - src/server/config/reset.js, src/server/data/seedData.js
 - Add CardAPI cards proxy route - src/server/routes/cards.js
+- Build Browse Cards page and temporary card layout - src/client/src/pages/DiscoverPage.jsx, src/client/src/pages/DiscoverPage.css
 - Build the initial CardMaxer frontend and navigation - src/client/src/pages/HomePage.jsx, src/client/src/components
 - Add the frontend GitHub login entry point - src/client/src/pages/Login.jsx, src/client/src/App.jsx
 - Request the authenticated user and render session-aware navigation - src/client/src/App.jsx, src/client/src/components/layout/Navbar.jsx
 - Add frontend logout functionality - src/client/src/App.jsx, src/client/src/components/layout/Navbar.jsx
 - Add a reusable GitHub user avatar component - src/client/src/components/Avatar.jsx, src/client/src/components/Avatar.css
 - Mark completed Authentication feature in README - README.md
+- Mark completed Browse Cards feature in README - README.md
 
 ## Features Completed This Unit
 List each feature you completed and checked off in readme.md this unit, one per line:
 - Authentication
+- Browse Cards
