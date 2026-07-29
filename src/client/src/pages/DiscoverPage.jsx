@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { data } from "react-router-dom";
+import "./DiscoverPage.css";
 
 //replace later
 const API_URL = "http://localhost:3001";
@@ -22,20 +22,23 @@ function DiscoverPage() {
   }, []);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <h1 className="discover-loading">Loading...</h1>;
   }
   return (
-    <>
+    <main className="discover-page">
+      {/* temp css/design */}
       <h1>Find Your Perfect Card</h1>
-      {cards.map((card) => (
-        <div>
-          <h3>{card.name}</h3>
-          <p>{card.issuers.name}</p>
-          <p>${card.annual_fee}</p>
-          <p>Signup bonus: {card.signup_bonus}</p>
-        </div>
-      ))}
-    </>
+      <div className="discover-grid">
+        {cards.map((card) => (
+          <div className="discover-card" key={card.id}>
+            <h3>{card.name}</h3>
+            <p>{card.issuers.name}</p>
+            <p>${card.annual_fee}</p>
+            <p>Signup bonus: {card.signup_bonus}</p>
+          </div>
+        ))}
+      </div>
+    </main>
   );
 }
 export default DiscoverPage;
