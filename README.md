@@ -32,13 +32,13 @@ Node.js, Express, PostgreSQL, Passport.js, GitHub OAuth
 
 Users can sign up and log in with GitHub, remain authenticated through a session, and log out.
 
-[gif goes here]
+![Authentication demo](gifs/auth.gif)
 
-### 2. Browse Cards
+### 2. ✅ Browse Cards
 
 Users can browse all available credit cards and search by name.
 
-[gif goes here]
+![Discover cards demo](gifs/discover.gif)
 
 ### 3. Favorite
 
