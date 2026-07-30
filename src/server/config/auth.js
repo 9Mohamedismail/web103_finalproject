@@ -1,5 +1,5 @@
 import GitHubStrategy from "passport-github2";
-import { pool } from "./pool.js";
+import { pool } from "./database.js";
 
 const options = {
     clientID: process.env.GITHUB_CLIENT_ID,
@@ -23,6 +23,8 @@ const verify = async (accessToken, refreshToken, profile, callback) => {
             "SELECT * FROM users WHERE username = $1",
             [userData.username],
         );
+        console.log("fetched user results")
+        console.log(results)
         const user = results.rows[0];
 
         if (!user) {
@@ -32,6 +34,8 @@ const verify = async (accessToken, refreshToken, profile, callback) => {
                 RETURNING *`,
                 [userData.githubId, userData.username, userData.avatarUrl, accessToken],
             );
+            console.log("created user results")
+            console.log(results)
 
             const newUser = results.rows[0];
             return callback(null, newUser);

@@ -22,13 +22,20 @@ app.use(
 app.use(
     session({
         secret: process.env.SESSION_SECRET || "cardmaxer-secret",
+        maxAge: 1000 * 60 * 60 * 24 * 7,
         resave: false,
         saveUninitialized: false,
     }),
 );
 
+
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use((req, res, next) => {
+    console.log('Raw Cookie header:', req.headers.cookie);
+    next();
+});
 
 passport.use(GitHub);
 
@@ -38,6 +45,16 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((user, done) => {
     done(null, user);
+});
+
+app.get('/debug-session', (req, res) => {
+    res.json({
+        rawCookieHeader: req.headers.cookie,
+        sessionID: req.sessionID,
+        sessionData: req.session,
+        isAuthenticated: req.isAuthenticated?.(),
+        user: req.user,
+    });
 });
 
 app.use("/auth", authRoutes);

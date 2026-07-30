@@ -181,11 +181,56 @@ const seedReviewsTable = async () => {
         ]);
 };
 
+const seedPerkCategoriesTable = async () => {
+    const insertQuery = `
+        INSERT INTO perk_categories (name)
+        VALUES ($1)
+        ON CONFLICT (name) DO NOTHING
+    `;
+
+    for (const category of seedData.perk_categories)
+        await pool.query(insertQuery, [category.name]);
+};
+
+const seedPerkScoresTable = async () => {
+    const insertQuery = `
+        INSERT INTO credit_card_perk_scores (credit_card_id, perk_category_id, score)
+        VALUES ($1, $2, $3)
+        ON CONFLICT (credit_card_id, perk_category_id) DO NOTHING
+    `;
+
+    for (const perkScore of seedData.credit_card_perk_scores)
+        await pool.query(insertQuery, [
+            perkScore.credit_card_id,
+            perkScore.perk_category_id,
+            perkScore.score,
+        ]);
+};
+
+const seedUserWeightsTable = async () => {
+    const insertQuery = `
+        INSERT INTO user_perk_weights (user_id, perk_category_id, weight)
+        VALUES ($1, $2, $3)
+        ON CONFLICT (user_id, perk_category_id) DO NOTHING
+    `;
+
+    for (const perkWeight of seedData.user_perk_weights)
+        await pool.query(insertQuery, [
+            perkWeight.user_id,
+            perkWeight.perk_category_id,
+            perkWeight.weight,
+        ]);
+};
+
 const seedTables = async () => {
     await seedUsersTable();
     await seedCreditCardsTable();
     await seedFavoritesTable();
     await seedReviewsTable();
+
+    await seedPerkCategoriesTable();
+    await seedPerkScoresTable();
+    await seedUserWeightsTable();
 };
 
 const resetDatabase = async () => {

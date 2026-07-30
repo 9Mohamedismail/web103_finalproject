@@ -6,6 +6,7 @@ import card_controller from "./card_controller.js"
 //expects user card preferences attached in body weight property
 async function getAll(req, res) {
     let data;
+    console.log("get all recs")
     try {
         const cardApiResponse = await fetch(
             "https://adaptable-dream-production-2fce.up.railway.app/v1/cards",
@@ -16,11 +17,12 @@ async function getAll(req, res) {
             },
         );
 
-        data = await cardApiResponse.json();
-
         if (!cardApiResponse.ok) {
             return res.status(cardApiResponse.status).json(data);
         }
+        data = await cardApiResponse.json();
+
+
 
     } catch (error) {
         res.status(500).json({ error: "Unable to retrieve cards" });
@@ -29,10 +31,14 @@ async function getAll(req, res) {
 
 
     let user_weights = req.body?.weights
+    console.log(user_weights)
     const user_id = req.user.id
     // user already finished survey, fetch from db
     if (!user_weights)
         user_weights = await rec_service.getWeightsByUser(user_id)
+
+    if (!user_weights)
+        res.status(400).json({ error: "Can't find user preferences" })
 
 
     // flatten to { perk: weight, ... }
