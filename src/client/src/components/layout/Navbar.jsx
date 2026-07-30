@@ -1,9 +1,10 @@
+import { NavLink, Link } from "react-router-dom";
 import Login from "../../pages/Login.jsx";
 import "./Navbar.css";
 
 const navLinks = [
   { label: "Discover", href: "/discover" },
-  { label: "Compare", href: "/compare", active: true },
+  { label: "Compare", href: "/compare" },
   { label: "Recommendations", href: "/recommendations" },
   { label: "Reviews", href: "/reviews" },
 ];
@@ -11,21 +12,21 @@ const navLinks = [
 function Navbar({ apiUrl, user, onLogout }) {
   return (
     <header className="navbar">
-      <a className="navbar__logo" href="/">
+      <Link className="navbar__logo" to="/">
         CardMaxer
-      </a>
+      </Link>
 
       <nav className="navbar__links" aria-label="Main navigation">
         {navLinks.map((link) => (
-          <a
+          <NavLink
             key={link.label}
-            href={link.href}
-            className={
-              link.active ? "navbar__link navbar__link--active" : "navbar__link"
+            to={link.href}
+            className={({ isActive }) =>
+              isActive ? "navbar__link navbar__link--active" : "navbar__link"
             }
           >
             {link.label}
-          </a>
+          </NavLink>
         ))}
       </nav>
 
