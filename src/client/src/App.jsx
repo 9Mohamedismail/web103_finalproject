@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useRoutes, Link } from "react-router-dom";
+import { useNavigate, useRoutes } from "react-router-dom";
 
 import Navbar from "./components/layout/Navbar.jsx";
-import HomePage from "./pages/HomePage.jsx";
+import Landing from "./pages/Landing.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import DiscoverPage from "./pages/DiscoverPage.jsx";
 
@@ -10,6 +10,7 @@ const API_URL = "http://localhost:3001";
 
 function App() {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   //user get
   useEffect(() => {
@@ -38,14 +39,15 @@ function App() {
     await fetch(`${API_URL}/auth/logout`, {
       credentials: "include",
     });
-    window.location.href = "/";
+    setUser(null);
+    navigate("/");
   };
 
   //page route elements
   let element = useRoutes([
     {
       path: "/",
-      element: <HomePage />,
+      element: <Landing />,
     },
     {
       path: "/discover",

@@ -1,46 +1,52 @@
-import Login from "../../pages/Login.jsx";
+import { Link, NavLink } from "react-router-dom";
+
 import "./Navbar.css";
 
-const navLinks = [
-  { label: "Discover", href: "/discover" },
-  { label: "Compare", href: "/compare", active: true },
-  { label: "Recommendations", href: "/recommendations" },
-  { label: "Reviews", href: "/reviews" },
-];
+const placeholderLinks = ["Compare", "Recommendations", "Reviews"];
 
 function Navbar({ apiUrl, user, onLogout }) {
   return (
     <header className="navbar">
-      <a className="navbar__logo" href="/">
-        CardMaxer
-      </a>
-
-      <nav className="navbar__links" aria-label="Main navigation">
-        {navLinks.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            className={
-              link.active ? "navbar__link navbar__link--active" : "navbar__link"
-            }
-          >
-            {link.label}
-          </a>
-        ))}
+      <nav className="navbar__nav" aria-label="Main navigation">
+        <div className="navbar__main">
+          <Link className="navbar__brand" to="/">
+            CardMaxer
+          </Link>
+          <div className="navbar__links">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "navbar__link navbar__link--active" : "navbar__link"
+              }
+              to="/discover"
+            >
+              Discover
+            </NavLink>
+            {placeholderLinks.map((label) => (
+              <Link className="navbar__link" key={label} to="/">
+                {label}
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="navbar__actions">
+          {user?.id ? (
+            <>
+              <span className="navbar__username">@{user.username}</span>
+              <button
+                type="button"
+                className="navbar__auth-button"
+                onClick={onLogout}
+              >
+                Log out
+              </button>
+            </>
+          ) : (
+            <a className="navbar__auth-button" href={`${apiUrl}/auth/github`}>
+              Log in with GitHub
+            </a>
+          )}
+        </div>
       </nav>
-
-      <div className="navbar__auth">
-        {user?.id ? (
-          <>
-            <span className="navbar__username">@{user.username}</span>
-            <button type="button" className="navbar__logout" onClick={onLogout}>
-              Log out
-            </button>
-          </>
-        ) : (
-          <Login apiUrl={apiUrl} />
-        )}
-      </div>
     </header>
   );
 }

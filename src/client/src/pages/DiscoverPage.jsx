@@ -30,7 +30,7 @@ function DiscoverPage() {
       <h1>Find Your Perfect Card</h1>
       <div className="discover-grid">
         {cards.map((card) => (
-          <div className="discover-card" key={card.id}>
+          <div className="discover-card" key={card.slug}>
             <h3>{card.name}</h3>
             <p>{card.issuers.name}</p>
             <p>${card.annual_fee}</p>

@@ -1,81 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Geist:wght@500;600;900&display=swap");
+
 .navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 50;
+  background-color: #f8f9ff;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+}
+
+.navbar__nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
-  padding: 1.25rem 2rem;
-  background: #fff;
+  width: 100%;
+  max-width: 1280px;
+  height: 80px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 16px 24px;
 }
 
-.navbar__logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-heading);
-  white-space: nowrap;
+.navbar__main {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.navbar__brand {
+  color: #000000;
+  font-family: "Geist", sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 40px;
+  letter-spacing: -0.01em;
 }
 
 .navbar__links {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
+  display: none;
+  gap: 24px;
 }
 
 .navbar__link {
-  font-size: 0.95rem;
-  color: var(--color-heading);
+  color: #45464d;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar__link:hover {
+  color: #000000;
 }
 
 .navbar__link--active {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #000000;
+  color: #000000;
 }
 
-.navbar__auth {
+.navbar__actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  white-space: nowrap;
+  gap: 16px;
 }
 
-.navbar__login,
-.navbar__logout {
-  font-size: 0.95rem;
-  color: var(--color-heading);
+.navbar__auth-button {
+  padding: 8px;
+  border: 0;
+  border-radius: 8px;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar__auth-button:hover {
+  opacity: 0.8;
 }
 
 .navbar__username {
-  font-size: 0.9rem;
-  color: var(--color-text);
+  display: none;
+  color: #45464d;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
 }
 
-.navbar__logout {
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
+@media (max-width: 639px) {
+  .navbar__brand {
+    font-size: 24px;
+    line-height: 32px;
+  }
 }
 
-.navbar__signup {
-  display: inline-block;
-  padding: 0.55rem 1.1rem;
-  border-radius: 999px;
-  background: var(--color-black);
-  color: #fff;
-  font-size: 0.9rem;
-  font-weight: 500;
+@media (min-width: 640px) {
+  .navbar__auth-button {
+    padding: 8px 24px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .navbar__username {
+    display: inline;
+  }
 }
 
-@media (max-width: 900px) {
-  .navbar {
-    flex-wrap: wrap;
-    justify-content: center;
+@media (min-width: 768px) {
+  .navbar__nav {
+    padding-right: 40px;
+    padding-left: 40px;
   }
 
   .navbar__links {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    display: flex;
   }
 }
