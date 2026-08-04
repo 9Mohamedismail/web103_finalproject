@@ -16,21 +16,6 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 - [x] 🚩🚩🚩**Record a GIF showing a complete run-through of your app** that displays all the components included in the **Final Project Feature Checklist** below
   - [x] Include this GIF in the **Final Demo GIF** section below
 
-## Audit Summary
-
-### Still needed for Milestone 5
-
-- Deploy the client and server on Render, verify all user-visible routes and features in production, and add the deployed URL to `README.md`.
-
-### Optional rubric features not currently implemented
-
-- One-to-one database relationship.
-- Slide-out pane or modal.
-- Visual loading spinner (the app currently uses loading text).
-- Disabling both buttons and inputs throughout form submissions, and disabling at least 75% of buttons after they are clicked.
-- User image uploads backed by cloud storage.
-- Toast notifications.
-
 ## Final Project Feature Checklist
 
 Complete the checklist below detailing each baseline, custom, and stretch feature you completed in your project. This checklist will help graders look for each feature in the GIF you submit.
