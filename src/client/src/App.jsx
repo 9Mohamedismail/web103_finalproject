@@ -11,10 +11,9 @@ import CardDetails from "./pages/CardDetails.jsx";
 import Reviews from "./pages/Reviews.jsx";
 import Favorites from "./pages/Favorites.jsx";
 
-const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:3001").replace(
-  /\/+$/,
-  "",
-);
+const API_URL = import.meta.env.PROD
+  ? "https://server-hcts.onrender.com"
+  : "";
 
 function App() {
   const [user, setUser] = useState(null);

@@ -4,7 +4,7 @@ CodePath WEB103 Final Project
 
 Designed and developed by: Mohamed Ismail, Tanvir Pulak, Jose Fuentes, Alexander Pulido, and Andrew Quach (Group 13)
 
-🔗 Link to deployed app:
+🔗 Link to deployed app: [https://cardmaxer.onrender.com](https://cardmaxer.onrender.com)
 
 ## About
 
@@ -129,6 +129,6 @@ Authenticated users can save or update a credit score and use the profile page t
 
 8. Open `http://localhost:5173` in a browser.
 
-The client uses `http://localhost:3001` by default. To use another API origin, set `VITE_API_URL` in `src/client/.env`.
+During local development, Vite proxies `/api` and `/auth` requests to `http://localhost:3001`. The production client uses the deployed API at `https://server-hcts.onrender.com`.
 
 Card terms and signup offers can change. Users should verify current terms and eligibility with the issuer before making a financial decision.
