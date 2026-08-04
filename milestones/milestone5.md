@@ -105,20 +105,20 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 
 ### 1. What went well during this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We were able to complete all the features we wanted.
 
 ### 2. What were some challenges your group faced in this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+Making sure everyone's branch was not conflicting with each other and that we weren't doing work others were doing. Also, at first we were using a public API but then we realized it had many features locked behind a paid wall. We ended up having to seed our own database data and that set us back a lot since we had to redo/rethink our tables.
 
 ### 3. What were some of the highlights or achievements that you are most proud of in this project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We had a lot of fun working on this passion project and we went from classmates to great friends.
 
 ### 4. Reflecting on your web development journey so far, how have you grown since the beginning of the course?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We all agreed that its amazing to look back and see how far we have come in this unit, from being able to create simple react apps to now a full auth based crud app.
 
 ### 5. Looking ahead, what are your goals related to web development, and what steps do you plan to take to achieve them?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We all said we want to achieve a job in computer science and create more projects like this.
