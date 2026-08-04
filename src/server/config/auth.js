@@ -1,46 +1,61 @@
 import GitHubStrategy from "passport-github2";
-import { pool } from "./pool.js";
+import { pool } from "./database.js";
+
+const serverUrl = (process.env.SERVER_URL || "http://localhost:3001").replace(
+    /\/+$/,
+    "",
+);
 
 const options = {
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: "http://localhost:3001/auth/github/callback",
+    callbackURL: `${serverUrl}/auth/github/callback`,
 };
 
-const verify = async (accessToken, refreshToken, profile, callback) => {
-    const {
-        _json: { id, name, login, avatar_url },
-    } = profile;
-    const userData = {
-        githubId: id,
-        username: login,
-        avatarUrl: avatar_url,
-        accessToken,
-    };
-
+const verify = async (_accessToken, _refreshToken, profile, callback) => {
     try {
-        const results = await pool.query(
-            "SELECT * FROM users WHERE username = $1",
-            [userData.username],
+        const result = await pool.query(
+            `
+                INSERT INTO users (githubid, username)
+                VALUES ($1, $2)
+                ON CONFLICT (githubid) DO UPDATE
+                SET username = EXCLUDED.username
+                RETURNING
+                    id,
+                    username,
+                    credit_score;
+            `,
+            [String(profile.id), profile.username],
         );
-        const user = results.rows[0];
 
-        if (!user) {
-            const results = await pool.query(
-                `INSERT INTO users (githubid, username, avatarurl, accesstoken)
-                VALUES($1, $2, $3, $4)
-                RETURNING *`,
-                [userData.githubId, userData.username, userData.avatarUrl, accessToken],
-            );
-
-            const newUser = results.rows[0];
-            return callback(null, newUser);
-        }
-
-        return callback(null, user);
+        return callback(null, result.rows[0]);
     } catch (error) {
         return callback(error);
     }
 };
 
 export const GitHub = new GitHubStrategy(options, verify);
+
+export function serializeUser(user, callback) {
+    callback(null, user.id);
+}
+
+export async function deserializeUser(id, callback) {
+    try {
+        const result = await pool.query(
+            `
+                SELECT
+                    id,
+                    username,
+                    credit_score
+                FROM users
+                WHERE id = $1;
+            `,
+            [id],
+        );
+
+        callback(null, result.rows[0] ?? false);
+    } catch (error) {
+        callback(error);
+    }
+}

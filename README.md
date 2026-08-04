@@ -2,7 +2,7 @@
 
 CodePath WEB103 Final Project
 
-Designed and developed by: Mohamed Ismail, Tanvir Pulak, Jose Fuentes, Alexander Pulido, Andrew Quach (Group 13)
+Designed and developed by: Mohamed Ismail, Tanvir Pulak, Jose Fuentes, Alexander Pulido, and Andrew Quach (Group 13)
 
 🔗 Link to deployed app:
 
@@ -10,58 +10,131 @@ Designed and developed by: Mohamed Ismail, Tanvir Pulak, Jose Fuentes, Alexander
 
 ### Description and Purpose
 
-CardMaxer is a full-stack web application that helps users browse, compare, and discover credit cards based on their financial needs. Users can explore detailed information about each card. The website also allows users to filter and sort cards, save favorites, read and write reviews, and receive personalized recommendations based on their credit score. The goal is to simplify the process of choosing a credit card by presenting information in an easy-to-understand and organized way.
+CardMaxer is a full-stack credit card research and tracking application. Visitors can search a catalog of 50 U.S. credit cards and review each card's annual fee, foreign transaction fee, signup bonus, reward categories, benefits, recommended credit-score threshold, and user reviews.
+
+The rule-based card matcher filters the catalog using an estimated credit-score range, one to three preferred reward categories, and an optional card type. After logging in with GitHub, users can save favorite cards, store or update their credit score, and create, edit, or delete one review per card. Card matches are informational and are not approval guarantees.
 
 ### Inspiration
 
-Many of us on the team own credit cards and are interested in maximizing our rewards based on our spending habits and interests. We wanted a simple, organized way to compare the cards we own, keep track of their benefits, and help others find credit cards that best match their financial goals and lifestyle. (EX. https://maxrewards.com/) 
+Our team owns and uses credit cards and is interested in understanding how different cards reward different spending habits. We wanted one organized place where users could browse card terms, focus on the reward categories they value, save a shortlist, and share their experiences with other users.
 
 ## Tech Stack
 
 Frontend:
 
-React, Vite
+React, React Router, Vite, HTML, and CSS
 
 Backend:
 
-Node.js, Express, PostgreSQL, Passport.js, GitHub OAuth
+Node.js, Express, PostgreSQL, Passport.js, GitHub OAuth, and server-side sessions
 
 ## Features
 
-### 1. ✅ Authentication
+### GitHub Authentication
 
-Users can sign up and log in with GitHub, remain authenticated through a session, and log out.
+Users can log in with GitHub, remain authenticated through a server-side session, see their username, and securely log out.
 
-![Authentication demo](gifs/auth.gif)
+![GitHub authentication demo](gifs/auth.gif)
 
-### 2. ✅ Browse Cards
+### Browse and Search Cards
 
-Users can browse all available credit cards and search by name.
+Visitors can browse the 50-card catalog, paginate through results, and search by card name, issuer, network, card type, or reward category.
 
-![Discover cards demo](gifs/discover.gif)
+![Credit card catalog demo](gifs/discover.gif)
 
-### 3. Favorite
+### Preference-Based Card Matcher
 
-Users can add or remove credit cards from their favorites list for quick access later.
+Users can select an estimated credit-score range, up to three reward goals, and an optional card type to see matching catalog cards. They can also broaden results to include partial goal matches or cards with lower score requirements.
 
-### 4. Personalized Card Recommendations
+Demo GIF not yet added.
 
-Users can enter their credit score and spending interests to receive recommended credit cards that best match their profile.
+### Credit Card Details
 
-[gif goes here]
+Each card has a dedicated page showing its issuer, network, fees, recommended score, reward structure, signup bonus, benefits, market, catalog update date, and user reviews.
 
-### 5. Reviews
+Demo GIF not yet added.
 
-Users can read reviews from other users and create, edit, or delete their own reviews for each credit card.
+### Favorite Cards
 
-[gif goes here]
+Authenticated users can favorite or unfavorite cards and manage their saved-card shortlist from the Favorites page or profile.
 
-### 6. View Credit Card Details
+Demo GIF not yet added.
 
-Users can open a dedicated page for each credit card to view its rewards, annual fee, benefits, drawbacks, and recommended credit score. They can also see user reviews and add their own.
+### User Reviews
 
-[gif goes here]
+Visitors can read card reviews. Authenticated users can create, edit, or delete one review per card and revisit their reviews from a dedicated page.
+
+Demo GIF not yet added.
+
+### Credit Score and Profile
+
+Authenticated users can save or update a credit score and use the profile page to review their recent activity, saved cards, and reviews.
+
+Demo GIF not yet added.
+
+### Responsive Navigation and Error Handling
+
+CardMaxer supports desktop and mobile layouts, includes an accessible mobile navigation menu, reports login and request failures, protects account-only routes, and provides a dedicated page for unknown URLs.
+
+Demo GIF not yet added.
 
 ## Installation Instructions
 
-[instructions go here]
+1. Install the client dependencies:
+
+   ```powershell
+   cd src/client
+   npm install
+   ```
+
+2. Install the server dependencies:
+
+   ```powershell
+   cd ../server
+   npm install
+   ```
+
+3. Create `src/server/.env` with the following configuration:
+
+   ```dotenv
+   DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE
+   DATABASE_SSL=false
+   SESSION_SECRET=replace-with-a-long-random-value
+   GITHUB_CLIENT_ID=your-github-oauth-client-id
+   GITHUB_CLIENT_SECRET=your-github-oauth-client-secret
+   CLIENT_URL=http://localhost:5173
+   SERVER_URL=http://localhost:3001
+   ```
+
+   Instead of `DATABASE_URL`, PostgreSQL can be configured with `PGUSER`, `PGPASSWORD`, `PGHOST`, `PGPORT`, and `PGDATABASE`. The `PG*` configuration uses TLS by default for compatibility with hosted databases; set `DATABASE_SSL=false` for a local database without TLS. When using `DATABASE_URL`, set `DATABASE_SSL=true` if the host requires it.
+
+4. Configure the GitHub OAuth application's callback URL as `http://localhost:3001/auth/github/callback`.
+
+5. Create the database schema and load the card catalog:
+
+   ```powershell
+   cd src/server
+   npm run reset
+   ```
+
+   This command is destructive and recreates the CardMaxer tables, removing existing users, favorites, and reviews.
+
+6. Start the API server:
+
+   ```powershell
+   cd src/server
+   npm run dev
+   ```
+
+7. In a separate terminal, start the client:
+
+   ```powershell
+   cd src/client
+   npm run dev
+   ```
+
+8. Open `http://localhost:5173` in a browser.
+
+The client uses `http://localhost:3001` by default. To use another API origin, set `VITE_API_URL` in `src/client/.env`.
+
+Card terms and signup offers can change. Users should verify current terms and eligibility with the issuer before making a financial decision.

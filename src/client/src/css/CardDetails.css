@@ -1,0 +1,637 @@
+.card-detail-canvas {
+  min-height: 100vh;
+  padding: 112px 16px 48px;
+  background-color: #f8f9ff;
+  color: #0b1c30;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.card-detail-canvas__inner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.card-detail-hero,
+.card-detail-panel,
+.card-detail-reviews {
+  border: 1px solid #c6c6cd;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+}
+
+.card-detail-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 24px;
+}
+
+.card-detail-hero__image {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 250px;
+  aspect-ratio: 1.58 / 1;
+  overflow: hidden;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #eff4ff;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+}
+
+.card-detail-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 7px rgb(0 0 0 / 12%));
+}
+
+.card-detail-hero__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  width: 100%;
+}
+
+.card-detail-hero h1 {
+  color: #0b1c30;
+  font-family: "Geist", sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 44px;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.card-detail-hero__content > div > p {
+  max-width: 672px;
+  margin-top: 4px;
+  color: #45464d;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.card-detail-hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin: 0;
+}
+
+.card-detail-hero__facts > div {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+}
+
+.card-detail-hero__facts dt {
+  color: #45464d;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.card-detail-hero__facts dd {
+  margin: 0;
+  color: #0b1c30;
+  font-family: "Geist", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+  overflow-wrap: anywhere;
+}
+
+.card-detail-hero__notice {
+  max-width: 760px;
+  color: #65666d;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.card-detail-favorite {
+  max-width: 240px;
+}
+
+.card-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.card-detail-panel {
+  min-width: 0;
+  padding: 24px;
+}
+
+.card-detail-panel h2,
+.card-detail-reviews h2 {
+  color: #0b1c30;
+  font-family: "Geist", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.01em;
+}
+
+.card-detail-panel > h2 {
+  margin-bottom: 16px;
+}
+
+.card-detail-rewards {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card-detail-rewards li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px;
+  border-bottom: 1px solid #e1e2e9;
+}
+
+.card-detail-rewards li:last-child {
+  border-bottom: 0;
+}
+
+.card-detail-rewards li > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.card-detail-rewards .material-symbols-outlined {
+  flex-shrink: 0;
+  color: #65666d;
+}
+
+.card-detail-rewards li > div > span:last-child {
+  font-size: 16px;
+  line-height: 24px;
+  overflow-wrap: anywhere;
+}
+
+.card-detail-rewards strong {
+  flex-shrink: 0;
+  font-family: "Geist", sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.card-detail-bonus h3 {
+  margin-bottom: 4px;
+  color: #65666d;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.card-detail-bonus__offer {
+  margin-bottom: 20px;
+}
+
+.card-detail-bonus p {
+  color: #0b1c30;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.card-detail-bonus ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card-detail-bonus li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.card-detail-bonus li .material-symbols-outlined {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #006c49;
+  font-size: 20px;
+  font-variation-settings: "FILL" 1;
+}
+
+.card-detail-bonus li span:last-child {
+  overflow-wrap: anywhere;
+}
+
+.card-detail-reviews {
+  padding: 24px;
+  scroll-margin-top: 96px;
+}
+
+.card-detail-reviews__heading {
+  margin-bottom: 24px;
+}
+
+.card-detail-reviews__heading p {
+  margin-top: 4px;
+  color: #45464d;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.card-detail-review-form {
+  padding: 16px;
+  border: 1px solid #c6c6cd;
+  border-radius: 8px;
+  background-color: #f8f9ff;
+}
+
+.card-detail-review-form fieldset {
+  margin: 0 0 14px;
+  padding: 0;
+  border: 0;
+}
+
+.card-detail-review-form legend,
+.card-detail-review-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #0b1c30;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.card-detail-stars-input {
+  display: flex;
+  gap: 3px;
+}
+
+.card-detail-stars-input button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: #9a9ba2;
+  cursor: pointer;
+}
+
+.card-detail-stars-input button:hover,
+.card-detail-stars-input button:focus-visible,
+.card-detail-stars-input button.is-selected {
+  color: #f2a900;
+}
+
+.card-detail-stars-input .material-symbols-outlined {
+  font-size: 26px;
+  font-variation-settings: "FILL" 1;
+}
+
+.card-detail-review-form textarea {
+  display: block;
+  width: 100%;
+  min-height: 100px;
+  resize: vertical;
+  padding: 16px;
+  border: 1px solid #c6c6cd;
+  border-radius: 8px;
+  outline: 0;
+  background-color: #ffffff;
+  color: #0b1c30;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.card-detail-review-form textarea:focus {
+  border-color: #006c49;
+  box-shadow: 0 0 0 2px rgb(0 108 73 / 18%);
+}
+
+.card-detail-review-form__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.card-detail-review-form__footer span,
+.card-detail-review-edit > div > span {
+  margin-right: auto;
+  color: #65666d;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.card-detail-review-form__footer button {
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 8px;
+  background-color: #006c49;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.card-detail-review-form__footer button:disabled,
+.card-detail-review-edit button:disabled,
+.card-detail-review__actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.card-detail-review-error {
+  margin-top: 12px;
+  color: #a8261f;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.card-detail-reviews__status,
+.card-detail-reviews__empty {
+  margin-top: 20px;
+  padding: 24px 16px;
+  border: 1px dashed #c6c6cd;
+  border-radius: 8px;
+  color: #65666d;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+}
+
+.card-detail-review-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.card-detail-review-feed article {
+  padding: 16px;
+  border: 1px solid #c6c6cd;
+  border-radius: 8px;
+  transition: background-color 150ms ease;
+}
+
+.card-detail-review-feed article:hover {
+  background-color: #f3f5fb;
+}
+
+.card-detail-review__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.card-detail-review__author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.card-detail-review__avatar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #d3e4fe;
+  color: #0b1c30;
+}
+
+.card-detail-review__author strong,
+.card-detail-review__author small {
+  display: block;
+}
+
+.card-detail-review__author strong {
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.card-detail-review__author small {
+  color: #65666d;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.card-detail-review__actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 16px;
+}
+
+.card-detail-review__actions button {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: #006c49;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.card-detail-review__actions button:last-child {
+  color: #a8261f;
+}
+
+.card-detail-review-feed article > p {
+  margin-top: 6px;
+  color: #45464d;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.card-detail-review-stars {
+  display: flex;
+  gap: 1px;
+  margin-top: 2px;
+  color: #f2a900;
+}
+
+.card-detail-review-stars .material-symbols-outlined {
+  font-size: 18px;
+  font-variation-settings: "FILL" 1;
+}
+
+.card-detail-review-edit {
+  margin-top: 12px;
+}
+
+.card-detail-review-edit textarea {
+  display: block;
+  width: 100%;
+  min-height: 100px;
+  margin-top: 8px;
+  resize: vertical;
+  padding: 12px;
+  border: 1px solid #c6c6cd;
+  border-radius: 8px;
+  outline: 0;
+  color: #0b1c30;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.card-detail-review-edit textarea:focus {
+  border-color: #006c49;
+  box-shadow: 0 0 0 2px rgb(0 108 73 / 18%);
+}
+
+.card-detail-review-edit > div:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.card-detail-review-edit > div:last-child button {
+  padding: 7px 12px;
+  border: 1px solid #c6c6cd;
+  border-radius: 7px;
+  background-color: #ffffff;
+  color: #0b1c30;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.card-detail-review-edit > div:last-child button[type="submit"] {
+  border-color: #006c49;
+  background-color: #006c49;
+  color: #ffffff;
+}
+
+.card-detail-status {
+  padding: 100px 16px;
+  color: #45464d;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.card-detail-empty {
+  max-width: 600px;
+  margin: 48px auto;
+  padding: 40px 24px;
+  border: 1px solid #e1e2e9;
+  border-radius: 12px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.card-detail-empty > .material-symbols-outlined {
+  color: #006c49;
+  font-size: 42px;
+}
+
+.card-detail-empty h1 {
+  margin-top: 12px;
+  font-family: "Geist", sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+}
+
+.card-detail-empty p {
+  margin: 8px 0 20px;
+  color: #45464d;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.card-detail-empty a {
+  display: inline-flex;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background-color: #0b1c30;
+  color: #ffffff;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+@media (max-width: 639px) {
+  .card-detail-hero h1 {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .card-detail-hero__facts {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card-detail-review__header {
+    flex-direction: column;
+  }
+
+  .card-detail-review__actions {
+    padding-left: 42px;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-detail-canvas {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .card-detail-hero {
+    flex-direction: row;
+  }
+
+  .card-detail-hero__content {
+    align-items: flex-start;
+  }
+
+  .card-detail-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,250 @@
+.favorite-control {
+  width: 100%;
+}
+
+.favorite-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 16px;
+  border: 1px solid #006c49;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #006c49;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.favorite-button:hover,
+.favorite-button:focus-visible,
+.favorite-button.is-favorite {
+  background-color: #e6f7ef;
+}
+
+.favorite-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.favorite-button .material-symbols-outlined {
+  font-size: 19px;
+}
+
+.favorite-button.is-favorite .material-symbols-outlined {
+  font-variation-settings: "FILL" 1;
+}
+
+.favorite-control__error {
+  display: block;
+  margin-top: 5px;
+  color: #a8261f;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.favorites-page {
+  min-height: 100vh;
+  padding: 120px 24px 48px;
+  background-color: #f8f9ff;
+  color: #0b1c30;
+  font-family: "Inter", sans-serif;
+}
+
+.favorites-page__container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.favorites-page__header {
+  margin-bottom: 32px;
+}
+
+.favorites-page__header > span {
+  color: #006c49;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.favorites-page__header h1 {
+  margin-top: 6px;
+  font-family: "Geist", sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 44px;
+  letter-spacing: -0.02em;
+}
+
+.favorites-page__header p {
+  margin-top: 4px;
+  color: #45464d;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.favorites-page__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+}
+
+.favorite-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #c6c6cd;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+}
+
+.favorite-card__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 176px;
+  padding: 16px;
+  background-color: #eff4ff;
+}
+
+.favorite-card__image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 7px rgb(0 0 0 / 12%));
+}
+
+.favorite-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  padding: 20px;
+}
+
+.favorite-card__body > span {
+  color: #65666d;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.favorite-card__body h2 {
+  margin-top: 4px;
+  font-family: "Geist", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 27px;
+  overflow-wrap: anywhere;
+}
+
+.favorite-card__body > p {
+  flex: 1;
+  margin-top: 8px;
+  color: #65666d;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.favorite-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.favorite-card__actions a,
+.favorite-card__actions button {
+  flex: 1;
+  min-width: 100px;
+  padding: 9px 12px;
+  border: 1px solid #c6c6cd;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #0b1c30;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+}
+
+.favorite-card__actions a {
+  border-color: #0b1c30;
+  background-color: #0b1c30;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.favorite-card__actions button {
+  color: #a8261f;
+}
+
+.favorite-card__actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.favorites-page__message,
+.favorites-page__empty {
+  padding: 48px 20px;
+  border: 1px solid #c6c6cd;
+  border-radius: 12px;
+  background-color: #ffffff;
+  color: #65666d;
+  text-align: center;
+}
+
+.favorites-page__message--error {
+  color: #a8261f;
+}
+
+.favorites-page__empty .material-symbols-outlined {
+  color: #006c49;
+  font-size: 40px;
+}
+
+.favorites-page__empty h2 {
+  margin-top: 10px;
+  font-family: "Geist", sans-serif;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.favorites-page__empty p {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+@media (min-width: 640px) {
+  .favorites-page__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .favorites-page {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .favorites-page__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

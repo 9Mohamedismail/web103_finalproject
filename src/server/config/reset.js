@@ -1,205 +1,138 @@
 // Contributor credit: Chris Lin.
 
 import { pool } from "./database.js";
-import seedData from "../data/seed_data.js";
+import cardData from "../data/cardData.js";
 
-const clearTablesQuery = `
+const schemaQuery = `
     DROP TABLE IF EXISTS
+        credit_card_perk_scores,
+        user_perk_weights,
+        perk_categories,
         reviews,
         favorites,
         credit_cards,
         users
     CASCADE;
+
+    CREATE TABLE users (
+        id SERIAL PRIMARY KEY,
+        githubid BIGINT NOT NULL UNIQUE,
+        username VARCHAR(200) NOT NULL,
+        credit_score INTEGER CHECK (credit_score BETWEEN 300 AND 850),
+        created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE credit_cards (
+        id SERIAL PRIMARY KEY,
+        card_id VARCHAR(200) NOT NULL UNIQUE,
+        name VARCHAR(200) NOT NULL,
+        issuer VARCHAR(100) NOT NULL,
+        network VARCHAR(20) NOT NULL CHECK (
+            network IN ('amex', 'visa', 'mastercard', 'discover')
+        ),
+        card_type VARCHAR(20) NOT NULL CHECK (
+            card_type IN ('personal', 'student', 'business', 'secured')
+        ),
+        image_url TEXT NOT NULL,
+        annual_fee DOUBLE PRECISION NOT NULL CHECK (annual_fee >= 0),
+        country CHAR(2) NOT NULL,
+        foreign_transaction_fee DOUBLE PRECISION NOT NULL CHECK (
+            foreign_transaction_fee >= 0
+        ),
+        signup_bonus JSONB,
+        reward_rates JSONB NOT NULL,
+        benefits JSONB NOT NULL,
+        credit_score_min INTEGER NOT NULL CHECK (
+            credit_score_min BETWEEN 300 AND 850
+        ),
+        updated_at TIMESTAMPTZ NOT NULL,
+        created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE favorites (
+        id SERIAL PRIMARY KEY,
+        user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        credit_card_id INTEGER NOT NULL REFERENCES credit_cards(id) ON DELETE CASCADE,
+        created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE (user_id, credit_card_id)
+    );
+
+    CREATE TABLE reviews (
+        id SERIAL PRIMARY KEY,
+        user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        credit_card_id INTEGER NOT NULL REFERENCES credit_cards(id) ON DELETE CASCADE,
+        rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5),
+        review_text TEXT NOT NULL CHECK (
+            char_length(btrim(review_text)) BETWEEN 1 AND 1000
+        ),
+        created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE (user_id, credit_card_id)
+    );
+
+    CREATE INDEX reviews_credit_card_id_idx ON reviews (credit_card_id);
 `;
 
-const createUsersTable = async () => {
-    const createTableQuery = `
-        CREATE TABLE IF NOT EXISTS users (
-            id SERIAL PRIMARY KEY,
-            githubid INT NOT NULL UNIQUE,
-            username VARCHAR(200) NOT NULL UNIQUE,
-            avatarurl VARCHAR(500),
-            accesstoken VARCHAR(500) NOT NULL,
-            credit_score INTEGER,
-            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-        );
-    `;
+const insertCardQuery = `
+    INSERT INTO credit_cards (
+        card_id,
+        name,
+        issuer,
+        network,
+        card_type,
+        image_url,
+        annual_fee,
+        country,
+        foreign_transaction_fee,
+        signup_bonus,
+        reward_rates,
+        benefits,
+        credit_score_min,
+        updated_at
+    )
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);
+`;
 
-    await pool.query(createTableQuery);
-};
+async function resetDatabase() {
+    const client = await pool.connect();
 
-const createCreditCardsTable = async () => {
-    const createTableQuery = `
-        CREATE TABLE IF NOT EXISTS credit_cards (
-            id SERIAL PRIMARY KEY,
-            api_card_id VARCHAR NOT NULL UNIQUE,
-            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-        );
-    `;
-
-    await pool.query(createTableQuery);
-};
-
-const createFavoritesTable = async () => {
-    const createTableQuery = `
-        CREATE TABLE IF NOT EXISTS favorites (
-            id SERIAL PRIMARY KEY,
-            user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-            credit_card_id INTEGER NOT NULL REFERENCES credit_cards(id) ON DELETE CASCADE,
-            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            UNIQUE (user_id, credit_card_id)
-        );
-    `;
-
-    await pool.query(createTableQuery);
-};
-
-const createReviewsTable = async () => {
-    const createTableQuery = `
-        CREATE TABLE IF NOT EXISTS reviews (
-            id SERIAL PRIMARY KEY,
-            user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-            credit_card_id INTEGER NOT NULL REFERENCES credit_cards(id) ON DELETE CASCADE,
-            rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5),
-            review_text TEXT,
-            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-        );
-    `;
-
-    await pool.query(createTableQuery);
-};
-
-const createPerkCategoriesTable = async () => {
-    const query = `
-        CREATE TABLE IF NOT EXISTS perk_categories (
-            id SERIAL PRIMARY KEY,
-            name VARCHAR NOT NULL UNIQUE
-        );
-    `;
-
-    await pool.query(query);
-}
-
-const createPerkScoresTable = async () => {
-    const query = `
-        CREATE TABLE IF NOT EXISTS credit_card_perk_scores(
-            id SERIAL PRIMARY KEY,
-            credit_card_id INTEGER NOT NULL REFERENCES credit_cards(id) ON DELETE CASCADE,
-            perk_category_id INTEGER NOT NULL REFERENCES perk_categories(id) ON DELETE CASCADE,
-            score INTEGER NOT NULL CHECK(score BETWEEN 0 AND 100),
-            UNIQUE(credit_card_id, perk_category_id)
-        );
-    `;
-
-    await pool.query(query);
-}
-
-const createUserWeightsTable = async () => {
-    const query = `
-        CREATE TABLE IF NOT EXISTS user_perk_weights (
-            id SERIAL PRIMARY KEY,
-            user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-            perk_category_id INTEGER NOT NULL REFERENCES perk_categories(id) ON DELETE CASCADE,
-            weight INTEGER NOT NULL CHECK (weight BETWEEN 0 AND 100),
-            UNIQUE (user_id, perk_category_id)
-        );
-    `;
-
-    await pool.query(query);
-}
-
-
-
-const createTables = async () => {
-    await createUsersTable();
-    await createCreditCardsTable();
-    await createFavoritesTable();
-    await createReviewsTable();
-
-    // card rec tbls
-    await createPerkCategoriesTable();
-    await createPerkScoresTable();
-    await createUserWeightsTable();
-};
-
-const clearTables = async () => {
-    await pool.query(clearTablesQuery);
-};
-
-const seedUsersTable = async () => {
-    const insertQuery = `
-        INSERT INTO users (githubid, username, avatarurl, accesstoken, credit_score)
-        VALUES ($1, $2, $3, $4, $5)
-        ON CONFLICT (username) DO NOTHING
-    `;
-
-    for (const user of seedData.users)
-        await pool.query(insertQuery, [
-            user.githubid,
-            user.username,
-            user.avatarurl,
-            user.accesstoken,
-            user.credit_score,
-        ]);
-};
-
-const seedCreditCardsTable = async () => {
-    const insertQuery = `
-        INSERT INTO credit_cards (api_card_id)
-        VALUES ($1)
-        ON CONFLICT (api_card_id) DO NOTHING
-    `;
-
-    for (const card of seedData.credit_cards)
-        await pool.query(insertQuery, [card.api_card_id]);
-};
-
-const seedFavoritesTable = async () => {
-    const insertQuery = `
-        INSERT INTO favorites (user_id, credit_card_id)
-        VALUES ($1, $2)
-        ON CONFLICT (user_id, credit_card_id) DO NOTHING
-    `;
-
-    for (const favorite of seedData.favorites)
-        await pool.query(insertQuery, [favorite.user_id, favorite.credit_card_id]);
-};
-
-const seedReviewsTable = async () => {
-    const insertQuery = `
-        INSERT INTO reviews (user_id, credit_card_id, rating, review_text)
-        VALUES ($1, $2, $3, $4)
-    `;
-
-    for (const review of seedData.reviews)
-        await pool.query(insertQuery, [
-            review.user_id,
-            review.credit_card_id,
-            review.rating,
-            review.review_text,
-        ]);
-};
-
-const seedTables = async () => {
-    await seedUsersTable();
-    await seedCreditCardsTable();
-    await seedFavoritesTable();
-    await seedReviewsTable();
-};
-
-const resetDatabase = async () => {
     try {
-        await clearTables();
-        await createTables();
-        await seedTables();
+        await client.query("BEGIN");
+        await client.query(schemaQuery);
+
+        for (const card of cardData) {
+            await client.query(insertCardQuery, [
+                card.id,
+                card.name,
+                card.issuer,
+                card.network,
+                card.card_type,
+                card.image_url,
+                card.annual_fee,
+                card.country,
+                card.foreign_transaction_fee,
+                card.signup_bonus === null
+                    ? null
+                    : JSON.stringify(card.signup_bonus),
+                JSON.stringify(card.reward_rates),
+                JSON.stringify(card.benefits),
+                card.credit_score_min,
+                card.updated_at,
+            ]);
+        }
+
+        await client.query("COMMIT");
+    } catch (error) {
+        await client.query("ROLLBACK");
+        throw error;
     } finally {
+        client.release();
         await pool.end();
     }
-};
+}
 
 resetDatabase()
-    .then(() => console.log("Database reset and seeded successfully"))
+    .then(() => console.log("Database reset and catalog seeded successfully"))
     .catch((error) => {
         console.error("Database reset failed", error);
         process.exitCode = 1;

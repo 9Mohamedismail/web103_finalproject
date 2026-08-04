@@ -1,0 +1,470 @@
+.profile-page {
+  min-height: 100vh;
+  padding: 120px 24px 40px;
+  background-color: #f8f9ff;
+  color: #0b1c30;
+  font-family: "Inter", sans-serif;
+}
+
+.profile-page__container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.profile-page__header {
+  margin-bottom: 40px;
+}
+
+.profile-page__header h1,
+.profile-panel__heading h2 {
+  font-family: "Geist", sans-serif;
+}
+
+.profile-page__header h1 {
+  margin-bottom: 4px;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: -0.01em;
+}
+
+.profile-page__header p {
+  color: #45464d;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.profile-page__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+
+.profile-panel {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid #c6c6cd;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+}
+
+.profile-panel__eyebrow {
+  align-self: flex-start;
+  color: #45464d;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.profile-panel__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.profile-panel__heading h2 {
+  color: #0b1c30;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.profile-text-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+}
+
+.profile-text-button {
+  flex-shrink: 0;
+  color: #5659d9;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  text-decoration: none;
+}
+
+.profile-text-button:hover,
+.profile-text-button:focus-visible {
+  text-decoration: underline;
+}
+
+.profile-score-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.profile-score-card__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.profile-score-card__heading button {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: #5659d9;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.profile-score-card__heading button:hover,
+.profile-score-card__heading button:focus-visible {
+  text-decoration: underline;
+}
+
+.profile-score-card__dial {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 192px;
+  height: 192px;
+  margin: 16px auto 0;
+}
+
+.profile-score-card__dial svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.profile-score-card__track,
+.profile-score-card__progress {
+  fill: transparent;
+  stroke-width: 12;
+}
+
+.profile-score-card__track {
+  stroke: #e5eeff;
+}
+
+.profile-score-card__progress {
+  stroke: #006c49;
+  stroke-linecap: round;
+  stroke-dasharray: 502.65;
+  transition: stroke-dashoffset 500ms ease;
+}
+
+.profile-score-card__value {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-score-card__value strong {
+  font-family: "Geist", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: -0.02em;
+}
+
+.profile-score-card__value span {
+  padding: 4px 8px;
+  border-radius: 9999px;
+  background-color: #6cf8bb;
+  color: #00714d;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.profile-score-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 280px;
+  margin: 20px auto 4px;
+  text-align: center;
+}
+
+.profile-score-form > .material-symbols-outlined {
+  color: #006c49;
+  font-size: 40px;
+}
+
+.profile-score-form h3 {
+  margin-top: 8px;
+  font-family: "Geist", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.profile-score-form > p:not(.profile-score-form__error) {
+  margin-top: 2px;
+  color: #65666d;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.profile-score-form label {
+  align-self: flex-start;
+  margin-top: 16px;
+  margin-bottom: 5px;
+  font-family: "Geist", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.profile-score-form input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #c6c6cd;
+  border-radius: 8px;
+  outline: 0;
+  color: #0b1c30;
+  font-family: "Geist", sans-serif;
+  font-size: 16px;
+}
+
+.profile-score-form input:focus {
+  border-color: #006c49;
+  box-shadow: 0 0 0 2px rgb(0 108 73 / 18%);
+}
+
+.profile-score-form__error {
+  margin-top: 6px;
+  color: #a8261f;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.profile-score-form > div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.profile-score-form button {
+  padding: 8px 12px;
+  border: 1px solid #c6c6cd;
+  border-radius: 7px;
+  background-color: #ffffff;
+  color: #0b1c30;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.profile-score-form button[type="submit"] {
+  border-color: #006c49;
+  background-color: #006c49;
+  color: #ffffff;
+}
+
+.profile-score-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.profile-reviews__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+
+.profile-panel__message {
+  padding: 28px 16px;
+  border: 1px dashed #c6c6cd;
+  border-radius: 8px;
+  color: #65666d;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+}
+
+.profile-panel__message--error {
+  color: #a8261f;
+}
+
+.profile-saved-card__name strong {
+  color: #0b1c30;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.profile-saved-cards__table-wrap {
+  overflow-x: auto;
+}
+
+.profile-saved-cards__table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.profile-saved-cards__table th {
+  padding: 0 16px 16px 0;
+  border-bottom: 1px solid #c6c6cd;
+  color: #45464d;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.profile-saved-cards__table td {
+  padding: 16px 16px 16px 0;
+  border-bottom: 1px solid #c6c6cd;
+}
+
+.profile-saved-cards__table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.profile-saved-cards__table tbody tr {
+  transition: background-color 150ms ease;
+}
+
+.profile-saved-cards__table tbody tr:hover {
+  background-color: #eff4ff;
+}
+
+.profile-saved-card__name {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-saved-card__name img {
+  flex-shrink: 0;
+  width: 56px;
+  height: 36px;
+  object-fit: contain;
+  padding: 2px;
+  border-radius: 4px;
+  background-color: #eff4ff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 12%);
+}
+
+.profile-saved-card__date {
+  color: #45464d;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.profile-saved-card__actions {
+  width: 190px;
+  padding-right: 0 !important;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.profile-saved-card__actions a,
+.profile-saved-card__actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 10px;
+  border: 1px solid #c6c6cd;
+  border-radius: 7px;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.profile-saved-card__actions a {
+  margin-right: 8px;
+  border-color: #0b1c30;
+  background-color: #0b1c30;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.profile-saved-card__actions button {
+  color: #a8261f;
+}
+
+.profile-saved-card__actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.profile-saved-cards__error {
+  margin-bottom: 12px;
+  color: #a8261f;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.profile-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 640px) {
+  .profile-reviews__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .profile-page {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profile-page__grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .profile-score-card {
+    grid-column: span 4;
+  }
+
+  .profile-reviews {
+    grid-column: span 8;
+  }
+
+  .profile-saved-cards {
+    grid-column: span 12;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-score-card__progress {
+    transition: none;
+  }
+}

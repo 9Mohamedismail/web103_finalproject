@@ -1,26 +1,57 @@
-# Entity Relationship Diagram
+# CardMaxer Entity Relationship Diagram
 
-Reference the **Creating an Entity Relationship Diagram** final project guide in the course portal for more information about completing this deliverable.
+The final CardMaxer database contains four tables. Credit card details are stored in PostgreSQL and loaded from the maintained catalog in `src/server/data/cardData.js`; the application does not call an external card API at runtime.
 
-> **Note:** This ERD is an early draft and is not final. As development continues, we may simplify the database, remove tables that are not needed, or adjust columns and relationships based on the final scope of the application.
+```mermaid
+erDiagram
+    users ||--o{ favorites : saves
+    users ||--o{ reviews : writes
+    credit_cards ||--o{ favorites : receives
+    credit_cards ||--o{ reviews : receives
 
-## Create the List of Tables
+    users {
+        integer id PK
+        bigint githubid UK
+        varchar username
+        integer credit_score
+        timestamptz created_at
+    }
 
-The current CardMaxer database design includes the following tables:
+    credit_cards {
+        integer id PK
+        varchar card_id UK
+        varchar name
+        varchar issuer
+        varchar network
+        varchar card_type
+        text image_url
+        double annual_fee
+        char country
+        double foreign_transaction_fee
+        jsonb signup_bonus
+        jsonb reward_rates
+        jsonb benefits
+        integer credit_score_min
+        timestamptz updated_at
+        timestamptz created_at
+    }
 
-- **users** - Stores user account information, login credentials, credit scores, and account creation dates.
-- **credit_cards** - Stores the CardAPI id for each external credit card that users have favorited or reviewed. Card details such as issuer, rewards, fees, APR, benefits, drawbacks, and recommended credit score should come from CardAPI.
-- **favorites** - Connects users to the credit cards they have saved as favorites.
-- **reviews** - Stores ratings and written reviews submitted by users for specific credit cards.
+    favorites {
+        integer id PK
+        integer user_id FK
+        integer credit_card_id FK
+        timestamptz created_at
+    }
 
-## Entity Relationship Diagram
+    reviews {
+        integer id PK
+        integer user_id FK
+        integer credit_card_id FK
+        integer rating
+        text review_text
+        timestamptz created_at
+        timestamptz updated_at
+    }
+```
 
-The diagram below is an early draft image and may still show older tables. The active backend schema now uses the four-table design listed above.
-
-![CardMaxer Entity Relationship Diagram](https://raw.githubusercontent.com/9Mohamedismail/web103_finalproject/main/planning/CardMaxer%20ERD%20draft.png)
-
-## Table Relationships
-
-- One user can have many favorites and reviews.
-- One credit card can appear in many favorites and reviews.
-- The **favorites** table creates a many-to-many relationship between users and credit cards.
+Each user can favorite a card once and review a card once. Deleting a user or card cascades to its related favorites and reviews.

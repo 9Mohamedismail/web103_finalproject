@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import "./Navbar.css";
 
-const placeholderLinks = ["Compare", "Recommendations", "Reviews"];
+const navLinkClass = ({ isActive }) =>
+  isActive ? "navbar__link navbar__link--active" : "navbar__link";
 
-function Navbar({ apiUrl, user, onLogout }) {
+function Navbar({ apiUrl, user, isAuthLoading, authError, onLogout }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
     <header className="navbar">
       <nav className="navbar__nav" aria-label="Main navigation">
@@ -12,24 +17,53 @@ function Navbar({ apiUrl, user, onLogout }) {
           <Link className="navbar__brand" to="/">
             CardMaxer
           </Link>
-          <div className="navbar__links">
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "navbar__link navbar__link--active" : "navbar__link"
-              }
-              to="/discover"
-            >
+          <div
+            className={`navbar__links ${isMenuOpen ? "navbar__links--open" : ""}`.trim()}
+            id="navbar-links"
+          >
+            <NavLink className={navLinkClass} to="/discover" onClick={closeMenu}>
               Discover
             </NavLink>
-            {placeholderLinks.map((label) => (
-              <Link className="navbar__link" key={label} to="/">
-                {label}
-              </Link>
-            ))}
+            <NavLink
+              className={navLinkClass}
+              to="/recommendations"
+              onClick={closeMenu}
+            >
+              Card Matcher
+            </NavLink>
+            {user?.id && (
+              <>
+                <NavLink className={navLinkClass} to="/profile" onClick={closeMenu}>
+                  Profile
+                </NavLink>
+                <NavLink className={navLinkClass} to="/reviews" onClick={closeMenu}>
+                  Reviews
+                </NavLink>
+                <NavLink className={navLinkClass} to="/favorites" onClick={closeMenu}>
+                  Favorites
+                </NavLink>
+              </>
+            )}
           </div>
         </div>
         <div className="navbar__actions">
-          {user?.id ? (
+          <button
+            type="button"
+            className="navbar__menu-button"
+            aria-controls="navbar-links"
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            onClick={() => setIsMenuOpen((currentValue) => !currentValue)}
+          >
+            <span className="material-symbols-outlined" aria-hidden="true">
+              {isMenuOpen ? "close" : "menu"}
+            </span>
+          </button>
+          {isAuthLoading ? (
+            <span className="navbar__session-status" role="status">
+              Checking session...
+            </span>
+          ) : user?.id ? (
             <>
               <span className="navbar__username">@{user.username}</span>
               <button
@@ -47,6 +81,11 @@ function Navbar({ apiUrl, user, onLogout }) {
           )}
         </div>
       </nav>
+      {authError && (
+        <p className="navbar__session-error" role="alert">
+          {authError}
+        </p>
+      )}
     </header>
   );
 }

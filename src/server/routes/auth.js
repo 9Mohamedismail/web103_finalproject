@@ -2,6 +2,10 @@ import express from "express";
 import passport from "passport";
 
 const router = express.Router();
+const clientUrl = (process.env.CLIENT_URL || "http://localhost:5173").replace(
+  /\/+$/,
+  "",
+);
 
 router.get("/login/success", (req, res) => {
   if (req.user) {
@@ -11,11 +15,7 @@ router.get("/login/success", (req, res) => {
   return res.status(401).json({ success: false, user: null });
 });
 
-router.get("/login/failed", (req, res) => {
-  res.status(401).json({ success: false, message: "failure" });
-});
-
-router.get("/logout", (req, res, next) => {
+router.post("/logout", (req, res, next) => {
   req.logout((err) => {
     if (err) {
       return next(err);
@@ -42,8 +42,8 @@ router.get(
 router.get(
   "/github/callback",
   passport.authenticate("github", {
-    successRedirect: "http://localhost:5173",
-    failureRedirect: "http://localhost:5173/?login=failed",
+    successRedirect: clientUrl,
+    failureRedirect: `${clientUrl}/?login=failed`,
   }),
 );
 

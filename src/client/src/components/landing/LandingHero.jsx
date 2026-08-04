@@ -1,24 +1,37 @@
-import CardMatchForm from "./CardMatchForm.jsx";
+import { Link } from "react-router-dom";
 
 function LandingHero() {
   return (
     <section className="hero">
-      <div className="hero__background" />
       <div className="hero__container">
         <div className="hero__layout">
           <div className="hero__content">
-            <span className="hero__eyebrow">Credit Cards Made Clear</span>
+            <span className="hero__eyebrow">Credit Card Research Made Clear</span>
             <h1 className="hero__title">
-              Find Your Perfect Card <span>Instantly</span>.
+              Explore Cards. <span>Match Your Priorities.</span>
             </h1>
             <p className="hero__description">
-              Browse and compare credit cards, explore rewards and fees, and get
-              personalized recommendations based on your credit score and
-              spending interests.
+              Search our U.S. credit card catalog, review fees, rewards, bonuses,
+              and benefits, then filter cards by your credit-score range,
+              preferred reward categories, and card type.
             </p>
-          </div>
-          <div className="hero__form-column">
-            <CardMatchForm />
+            <div className="hero__actions">
+              <Link className="hero__action hero__action--primary" to="/discover">
+                Browse the Card Catalog
+                <span className="material-symbols-outlined" aria-hidden="true">
+                  explore
+                </span>
+              </Link>
+              <Link
+                className="hero__action hero__action--secondary"
+                to="/recommendations"
+              >
+                Match Cards to My Preferences
+                <span className="material-symbols-outlined" aria-hidden="true">
+                  arrow_forward
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

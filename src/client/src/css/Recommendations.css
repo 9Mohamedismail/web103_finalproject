@@ -1,0 +1,458 @@
+.recommendations-canvas {
+  min-height: 100vh;
+  padding: 120px 16px 48px;
+  background-color: #f8f9ff;
+  color: #0b1c30;
+  font-family: "Inter", sans-serif;
+}
+
+.recommendations-canvas__inner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.recommendations-form-view {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.recommendations-form-view__intro {
+  max-width: 680px;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.recommendations-form-view__intro > span {
+  color: #006c49;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.recommendations-form-view__intro h1 {
+  margin-top: 8px;
+  font-family: "Geist", sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 50px;
+  letter-spacing: -0.02em;
+}
+
+.recommendations-form-view__intro p {
+  margin-top: 12px;
+  color: #45464d;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.recommendation-form {
+  padding: 24px;
+  border: 1px solid #c6c6cd;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%),
+    0 8px 10px -6px rgb(0 0 0 / 10%);
+  backdrop-filter: blur(12px);
+}
+
+.recommendation-form__content > * + * {
+  margin-top: 24px;
+}
+
+.recommendation-form__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.recommendation-form__title {
+  color: #0b1c30;
+  font-family: "Geist", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.recommendation-form__step {
+  flex-shrink: 0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #6cf8bb;
+  color: #00714d;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.recommendation-form__fields > * + * {
+  margin-top: 16px;
+}
+
+.recommendation-form__label {
+  display: block;
+  color: #0b1c30;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+}
+
+.recommendation-form__fields > div > .recommendation-form__label {
+  margin-bottom: 4px;
+}
+
+.recommendation-form__label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.recommendation-form__helper {
+  flex-shrink: 0;
+  color: #65666d;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.recommendation-form__scores,
+.recommendation-form__card-types {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.recommendation-form__score {
+  min-width: 0;
+  padding: 8px 4px;
+  border: 1px solid #c6c6cd;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #0b1c30;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.recommendation-form__score:hover,
+.recommendation-form__score:focus-visible {
+  border-color: #006c49;
+}
+
+.recommendation-form__score--selected {
+  border-color: #006c49;
+  background-color: rgb(108 248 187 / 20%);
+}
+
+.recommendation-form__goals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.recommendation-form__goal {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 9999px;
+  background-color: #dce9ff;
+  color: #0b1c30;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
+  transition: background-color 150ms ease;
+}
+
+.recommendation-form__goal:hover,
+.recommendation-form__goal:focus-visible,
+.recommendation-form__goal--selected {
+  background-color: #6cf8bb;
+}
+
+.recommendation-form__goal:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.recommendation-form__goal .material-symbols-outlined {
+  flex-shrink: 0;
+  font-size: 18px;
+}
+
+.recommendation-form__error {
+  margin-top: 6px;
+  color: #a8261f;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.recommendation-form__submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 16px 12px;
+  border: 0;
+  border-radius: 12px;
+  background-color: #000000;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.recommendation-form__submit:hover,
+.recommendation-form__submit:focus-visible {
+  opacity: 0.9;
+}
+
+.recommendation-form__submit:active {
+  transform: scale(0.98);
+}
+
+.recommendations-header {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.recommendations-header__eyebrow {
+  color: #006c49;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.recommendations-header h1 {
+  margin-top: 8px;
+  color: #0b1c30;
+  font-family: "Geist", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: -0.02em;
+}
+
+.recommendations-header__message {
+  max-width: 760px;
+  margin: 16px auto 0;
+  color: #45464d;
+  font-size: 17px;
+  line-height: 26px;
+}
+
+.recommendations-header__disclaimer {
+  max-width: 680px;
+  margin: 8px auto 0;
+  color: #65666d;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.recommendations-header__preferences {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 18px;
+}
+
+.recommendations-header__preferences span {
+  padding: 5px 10px;
+  border-radius: 9999px;
+  background-color: #d3e4fe;
+  color: #0b1c30;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.recommendations-header__reset {
+  margin-top: 12px;
+  padding: 6px 10px;
+  border: 0;
+  background-color: transparent;
+  color: #006c49;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.recommendations-header__options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 760px;
+  margin: 24px auto 0;
+  text-align: left;
+}
+
+.recommendations-header__options button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid #c6c6cd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #0b1c30;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+  text-align: left;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.recommendations-header__options button:hover,
+.recommendations-header__options button:focus-visible,
+.recommendations-header__options button.is-active {
+  border-color: #006c49;
+  background-color: rgb(108 248 187 / 20%);
+}
+
+.recommendations-header__options .material-symbols-outlined {
+  flex-shrink: 0;
+  color: #006c49;
+}
+
+.recommendations-header__options button > span:last-child {
+  min-width: 0;
+}
+
+.recommendations-header__options strong,
+.recommendations-header__options small {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.recommendations-header__options strong {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.recommendations-header__options small {
+  margin-top: 2px;
+  color: #65666d;
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.recommendations-status {
+  padding: 100px 16px;
+  color: #45464d;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.recommendations-status--error {
+  color: #a8261f;
+}
+
+.recommendations-empty {
+  max-width: 600px;
+  margin: 48px auto;
+  padding: 40px 24px;
+  border: 1px solid #e5eeff;
+  border-radius: 12px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.recommendations-empty > .material-symbols-outlined {
+  color: #006c49;
+  font-size: 42px;
+}
+
+.recommendations-empty h2 {
+  margin-top: 12px;
+  font-family: "Geist", sans-serif;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.recommendations-empty p {
+  margin: 8px auto 20px;
+  color: #45464d;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.recommendations-empty button {
+  display: inline-flex;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 8px;
+  background-color: #0b1c30;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 639px) {
+  .recommendations-form-view__intro h1 {
+    font-size: 34px;
+    line-height: 42px;
+  }
+
+  .recommendations-header h1 {
+    font-size: 38px;
+    line-height: 46px;
+  }
+
+  .recommendations-header__options {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (min-width: 640px) {
+  .recommendation-form__scores,
+  .recommendation-form__card-types {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .recommendations-canvas {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}

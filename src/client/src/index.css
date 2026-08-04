@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap");
+
 :root {
   --color-text: #4b5563;
   --color-heading: #111827;
@@ -28,6 +31,51 @@ body {
   min-height: 100vh;
 }
 
+.material-symbols-outlined {
+  display: inline-block;
+  font-family: "Material Symbols Outlined";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: normal;
+  font-feature-settings: "liga";
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
+
+.private-route-status {
+  min-height: 100vh;
+  padding: 160px 24px 40px;
+  color: #4b5563;
+  text-align: center;
+}
+
+.not-found-page {
+  min-height: 100vh;
+  padding: 160px 24px 40px;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.not-found-page h1 {
+  color: var(--color-heading);
+}
+
+.not-found-page p {
+  margin-top: 8px;
+}
+
+.not-found-page a {
+  display: inline-block;
+  margin-top: 20px;
+  color: #006c49;
+  font-weight: 600;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -35,7 +83,8 @@ a {
 
 button,
 input,
-select {
+select,
+textarea {
   font: inherit;
 }
 

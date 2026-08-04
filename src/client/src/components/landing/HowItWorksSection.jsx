@@ -4,11 +4,11 @@ function HowItWorksSection() {
       <div className="how-it-works__container">
         <div className="how-it-works__intro">
           <h2 className="how-it-works__title">
-            Maximize Your Wallet in 3 Steps
+            Explore CardMaxer in 3 Steps
           </h2>
           <p className="how-it-works__subtitle">
-            We've simplified the complex world of credit cards into a
-            transparent, actionable journey.
+            Browse the catalog, narrow it with clear preference filters, and
+            keep track of the cards that interest you.
           </p>
         </div>
         <div className="how-it-works__grid">
@@ -16,41 +16,47 @@ function HowItWorksSection() {
             <div className="how-it-works__number how-it-works__number--one">
               1
             </div>
-            <h3 className="how-it-works__card-title">Discover</h3>
+            <h3 className="how-it-works__card-title">Browse</h3>
             <p className="how-it-works__card-description">
-              Tell us what you buy most. Whether it's dining out, gas, or
-              flights, we analyze thousands of cards to find those that pay you
-              back the most.
+              Search the catalog by card, issuer, network, type, or reward
+              category, then open any card for its full fee, reward, bonus, and
+              benefit details.
             </p>
             <div className="how-it-works__icon">
-              <span className="material-symbols-outlined">search_insights</span>
+              <span className="material-symbols-outlined" aria-hidden="true">
+                search
+              </span>
             </div>
           </div>
           <div className="how-it-works__card">
             <div className="how-it-works__number how-it-works__number--two">
               2
             </div>
-            <h3 className="how-it-works__card-title">Compare</h3>
+            <h3 className="how-it-works__card-title">Match</h3>
             <p className="how-it-works__card-description">
-              View side-by-side breakdowns of annual fees, interest rates, and
-              reward multipliers. Our transparency engine exposes hidden fine
-              print.
+              Choose an estimated credit-score range, up to three reward goals,
+              and an optional card type to see catalog cards that meet those
+              criteria.
             </p>
             <div className="how-it-works__icon">
-              <span className="material-symbols-outlined">compare</span>
+              <span className="material-symbols-outlined" aria-hidden="true">
+                tune
+              </span>
             </div>
           </div>
           <div className="how-it-works__card">
             <div className="how-it-works__number how-it-works__number--three">
               3
             </div>
-            <h3 className="how-it-works__card-title">Save</h3>
+            <h3 className="how-it-works__card-title">Save &amp; Review</h3>
             <p className="how-it-works__card-description">
-              Apply with confidence through our secure portal. Most users save
-              an average of $600/year in rewards and avoided fees.
+              Log in with GitHub to save a shortlist, record your credit score,
+              and share one review for each card you have experience with.
             </p>
             <div className="how-it-works__icon">
-              <span className="material-symbols-outlined">wallet</span>
+              <span className="material-symbols-outlined" aria-hidden="true">
+                bookmark_heart
+              </span>
             </div>
           </div>
         </div>

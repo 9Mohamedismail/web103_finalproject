@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Geist:wght@500;600;900&display=swap");
-
 .navbar {
   position: fixed;
   top: 0;
@@ -42,6 +40,25 @@
   gap: 24px;
 }
 
+.navbar__links--open {
+  position: absolute;
+  top: 72px;
+  right: 24px;
+  left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 12px;
+  border: 1px solid #d9d9e0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 24px rgb(11 28 48 / 12%);
+}
+
+.navbar__links--open .navbar__link {
+  padding: 10px 12px;
+}
+
 .navbar__link {
   color: #45464d;
   font-family: "Inter", sans-serif;
@@ -65,6 +82,22 @@
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.navbar__menu-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border: 1px solid #c6c6cd;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #0b1c30;
+  cursor: pointer;
+}
+
+.navbar__menu-button .material-symbols-outlined {
+  font-size: 20px;
 }
 
 .navbar__auth-button {
@@ -95,6 +128,29 @@
   white-space: nowrap;
 }
 
+.navbar__session-status {
+  color: #65666d;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.navbar__session-error {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  left: 0;
+  margin: 0;
+  padding: 8px 24px;
+  background-color: #fce8e6;
+  color: #a8261f;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+}
+
 @media (max-width: 639px) {
   .navbar__brand {
     font-size: 24px;
@@ -121,6 +177,56 @@
   }
 
   .navbar__links {
+    position: static;
     display: flex;
+    flex-direction: row;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .navbar__links .navbar__link {
+    padding-top: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .navbar__menu-button {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1099px) {
+  .navbar__nav {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .navbar__main {
+    gap: 16px;
+  }
+
+  .navbar__brand {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .navbar__links {
+    gap: 12px;
+  }
+
+  .navbar__link {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .navbar__username {
+    display: none;
+  }
+
+  .navbar__auth-button {
+    padding-right: 12px;
+    padding-left: 12px;
   }
 }

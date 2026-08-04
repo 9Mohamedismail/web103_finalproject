@@ -1,11 +1,12 @@
 {
   "name": "cardmatch",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "CardMaxer API server",
+  "main": "Server.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon Server.js",
+    "start": "node Server.js",
+    "dev": "nodemon Server.js",
     "reset": "node config/reset.js"
   },
   "author": "",
@@ -15,9 +16,11 @@
     "dotenv": "^17.4.2",
     "express": "^4.22.2",
     "express-session": "^1.19.0",
-    "nodemon": "^2.0.22",
     "passport": "^0.7.0",
     "passport-github2": "^0.1.12",
     "pg": "^8.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
