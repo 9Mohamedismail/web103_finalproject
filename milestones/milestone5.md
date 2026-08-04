@@ -45,7 +45,7 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
     - [x] Components broken down into categories, including Page and Component types
     - [x] Corresponding container components and presenter components as appropriate
 - [x] The project includes dynamic routes for both frontend and backend apps
-- [ ] The project is deployed on Render with all pages and features that are visible to the user are working as intended
+- [X] The project is deployed on Render with all pages and features that are visible to the user are working as intended
 
 ### Custom Features
 
