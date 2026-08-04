@@ -14,27 +14,29 @@ import cardsRoutes from "./routes/cards.js";
 import reviewsRoutes from "./routes/reviews.js";
 import usersRoutes from "./routes/users.js";
 import favoritesRoutes from "./routes/favorites.js";
+import {
+    allowedClientOrigins,
+    isProduction,
+} from "./config/environment.js";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const clientUrl = (process.env.CLIENT_URL || "http://localhost:5173").replace(
-    /\/+$/,
-    "",
-);
 const sessionSecret = process.env.SESSION_SECRET;
 
 if (!sessionSecret) {
     throw new Error("SESSION_SECRET is required");
 }
 
-if (process.env.NODE_ENV === "production") {
+if (isProduction) {
     app.set("trust proxy", 1);
 }
 
 app.use(express.json());
 app.use(
     cors({
-        origin: clientUrl,
+        origin(origin, callback) {
+            callback(null, !origin || allowedClientOrigins.has(origin));
+        },
         methods: "GET,POST,PUT,DELETE,PATCH",
         credentials: true,
     }),
@@ -47,8 +49,8 @@ app.use(
         saveUninitialized: false,
         cookie: {
             httpOnly: true,
-            sameSite: "lax",
-            secure: process.env.NODE_ENV === "production",
+            sameSite: isProduction ? "none" : "lax",
+            secure: isProduction,
         },
     }),
 );

@@ -131,4 +131,14 @@ Authenticated users can save or update a credit score and use the profile page t
 
 During local development, Vite proxies `/api` and `/auth` requests to `http://localhost:3001`. The production client uses the deployed API at `https://server-hcts.onrender.com`.
 
+For the deployed API service on Render, set these environment variables and redeploy:
+
+```dotenv
+NODE_ENV=production
+CLIENT_URL=https://cardmaxer.onrender.com
+SERVER_URL=https://server-hcts.onrender.com
+```
+
+`CLIENT_URLS` can optionally contain a comma-separated list of additional trusted frontend origins (for example, a staging deployment). Do not include paths or trailing slashes.
+
 Card terms and signup offers can change. Users should verify current terms and eligibility with the issuer before making a financial decision.

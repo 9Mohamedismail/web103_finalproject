@@ -1,11 +1,8 @@
 import express from "express";
 import passport from "passport";
+import { clientUrl } from "../config/environment.js";
 
 const router = express.Router();
-const clientUrl = (process.env.CLIENT_URL || "http://localhost:5173").replace(
-  /\/+$/,
-  "",
-);
 
 router.get("/login/success", (req, res) => {
   if (req.user) {
