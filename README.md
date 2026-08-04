@@ -30,13 +30,13 @@ Node.js, Express, PostgreSQL, Passport.js, GitHub OAuth, and server-side session
 
 ## Features
 
-### GitHub Authentication
+### ✅ GitHub Authentication
 
 Users can log in with GitHub, remain authenticated through a server-side session, see their username, and securely log out.
 
 ![GitHub authentication demo](gifs/auth.gif)
 
-### Browse and Search Cards
+### ✅ Browse and Search Cards
 
 Visitors can browse the 50-card catalog, paginate through results, and search by card name, issuer, network, card type, or reward category.
 
@@ -48,23 +48,23 @@ Users can select an estimated credit-score range, up to three reward goals, and 
 
 Demo GIF not yet added.
 
-### Credit Card Details
+### ✅ Credit Card Details
 
 Each card has a dedicated page showing its issuer, network, fees, recommended score, reward structure, signup bonus, benefits, market, catalog update date, and user reviews.
 
-Demo GIF not yet added.
+![Credit card details demo](gifs/view.gif)
 
-### Favorite Cards
+### ✅ Favorite Cards
 
 Authenticated users can favorite or unfavorite cards and manage their saved-card shortlist from the Favorites page or profile.
 
-Demo GIF not yet added.
+![Favorite cards demo](gifs/favorite.gif)
 
-### User Reviews
+### ✅ User Reviews
 
 Visitors can read card reviews. Authenticated users can create, edit, or delete one review per card and revisit their reviews from a dedicated page.
 
-Demo GIF not yet added.
+![User reviews demo](gifs/reviews.gif)
 
 ### Credit Score and Profile
 
