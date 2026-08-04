@@ -42,11 +42,11 @@ Visitors can browse the 50-card catalog, paginate through results, and search by
 
 ![Credit card catalog demo](gifs/discover.gif)
 
-### Preference-Based Card Matcher
+### ✅ Preference-Based Card Matcher
 
 Users can select an estimated credit-score range, up to three reward goals, and an optional card type to see matching catalog cards. They can also broaden results to include partial goal matches or cards with lower score requirements.
 
-Demo GIF not yet added.
+![Preference-based card matcher demo](gifs/recommend.gif)
 
 ### ✅ Credit Card Details
 
@@ -66,17 +66,11 @@ Visitors can read card reviews. Authenticated users can create, edit, or delete 
 
 ![User reviews demo](gifs/reviews.gif)
 
-### Credit Score and Profile
+### ✅ Credit Score and Profile
 
 Authenticated users can save or update a credit score and use the profile page to review their recent activity, saved cards, and reviews.
 
-Demo GIF not yet added.
-
-### Responsive Navigation and Error Handling
-
-CardMaxer supports desktop and mobile layouts, includes an accessible mobile navigation menu, reports login and request failures, protects account-only routes, and provides a dedicated page for unknown URLs.
-
-Demo GIF not yet added.
+![Credit score and profile demo](gifs/profile.gif)
 
 ## Installation Instructions
 
