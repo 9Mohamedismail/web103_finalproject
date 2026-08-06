@@ -311,6 +311,10 @@
 
 .card-detail-stars-input .material-symbols-outlined {
   font-size: 26px;
+  font-variation-settings: "FILL" 0;
+}
+
+.card-detail-stars-input button.is-selected .material-symbols-outlined {
   font-variation-settings: "FILL" 1;
 }
 
@@ -489,11 +493,16 @@
   display: flex;
   gap: 1px;
   margin-top: 2px;
-  color: #f2a900;
+  color: #9a9ba2;
 }
 
 .card-detail-review-stars .material-symbols-outlined {
   font-size: 18px;
+  font-variation-settings: "FILL" 0;
+}
+
+.card-detail-review-stars .material-symbols-outlined.is-filled {
+  color: #f2a900;
   font-variation-settings: "FILL" 1;
 }
 

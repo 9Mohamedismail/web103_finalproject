@@ -33,10 +33,12 @@ function ReviewStars({ rating }) {
       {[1, 2, 3, 4, 5].map((star) => (
         <span
           key={star}
-          className="material-symbols-outlined"
+          className={`material-symbols-outlined${
+            star <= rating ? " is-filled" : ""
+          }`}
           aria-hidden="true"
         >
-          {star <= rating ? "star" : "star_outline"}
+          star
         </span>
       ))}
     </div>
