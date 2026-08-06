@@ -2,7 +2,7 @@
 
 CodePath WEB103 Final Project
 
-Designed and developed by: Mohamed Ismail, Tanvir Pulak, Jose Fuentes, Alexander Pulido, and Andrew Quach (Group 13)
+Designed and developed by: Mohamed Ismail, Tanvir Pulak, Jose Fuentes, Andrew Quach, and Christopher Lin (Group 13)
 
 🔗 Link to deployed app: [https://cardmaxer.onrender.com](https://cardmaxer.onrender.com)
 
